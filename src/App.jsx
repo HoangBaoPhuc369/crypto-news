@@ -1,19 +1,21 @@
 import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/home/home';
 
 function App() {
     return (
         <>
-            {/* <Switch>
-                <Route exact path="/">
+            <Routes>
+                {/* <Route exact path="/">
                     {user ? <Home /> : <Register />}
                 </Route>
                 <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
                 <Route path="/register">{user ? <Redirect to="/" /> : <Register />}</Route>
                 <Route path="/profile/:username">
                     <Profile />
-                </Route>
-            </Switch> */}
+                </Route> */}
+                <Route exact path="/" element={<Home />} />
+            </Routes>
         </>
     );
 }
