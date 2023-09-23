@@ -4,6 +4,7 @@ import {
     Avatar,
     Badge,
     Box,
+    Container,
     Grid,
     InputBase,
     List,
@@ -26,7 +27,7 @@ import logo from '../../assets/images/logo-crypto-news.png';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const StyledButton = styled('div')({
-    cursor: 'pointer',
+    cursor: 'pointer'
 });
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,7 +59,10 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     return (
         <>
-            <AppBar position="sticky" color="transparent">
+            {/* <AppBar position="sticky" color="transparent">
+                
+            </AppBar> */}
+            <AppBar position="sticky" sx={{ background: 'transparent', boxShadow: 'unset' }}>
                 <Box sx={{ backgroundColor: '#FFC20E' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
@@ -75,9 +79,11 @@ const Header = () => {
                                     key={index}
                                 >
                                     <Avatar sx={{ width: 22, height: 22 }} src={`${_.get(item, 'image', '')}`} />
-                                    <Box sx={{ display: 'flex' }} gap={0.5}>
+                                    <Box sx={{ display: 'flex', color: '#000' }} gap={0.5}>
                                         <Typography fontSize={15}>{_.get(item, 'name', '')}</Typography>
-                                        <Typography fontSize={15}>({_.get(item, 'symbol', '')})</Typography>
+                                        <Typography sx={{ textTransform: 'uppercase' }} fontSize={15}>
+                                            ({_.get(item, 'symbol', '')})
+                                        </Typography>
                                     </Box>
                                     <Box
                                         sx={{ display: 'flex' }}
@@ -101,64 +107,70 @@ const Header = () => {
                         </Box>
                     </Marquee>
                 </Box>
-            </AppBar>
-            <AppBar position="sticky" sx={{ background: '#bb1919' }}>
-                <Toolbar
-                    sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'center', width: '1200px', margin: '0 auto' }}
-                >
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-                        <Typography
+                <Container maxWidth="lg">
+                        <Avatar sx={{ width: 90, height: 80, mt: '20px' }} src={logo} />
+                </Container>
+                <Box sx={{ mt: '10px' }}>
+                    <Container maxWidth="lg">
+                        <Toolbar
                             sx={{
-                                display: {
-                                    xs: 'none',
-                                    sm: 'block',
-                                    width: '60px',
-                                    height: '60px',
-                                    borderRadius: '50%',
-                                    background: '#eeee'
-                                }
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignContent: 'center',
+                                background: '#bb1919',
+                                borderRadius: '10px'
                             }}
                         >
-                            <Avatar sx={{ width: 60, height: 60 }} src={logo} />
-                        </Typography>
-                        <Grid item container sx={{ display: 'flex', alignItems: 'center', gap: '34px' }}>
-                            <Grid item sx={{ display: 'flex', alignItems: 'center', gap: '5px', cursor: 'pointer' }}>
-                                <Typography variant="h5">Tin tức</Typography>
-                                <KeyboardArrowDownIcon />
-                            </Grid>
-                            <Grid item sx={{ cursor: 'pointer' }}>
-                                <Typography variant="h5">Pháp lý</Typography>
-                            </Grid>
-                            <Grid item sx={{ cursor: 'pointer' }}>
-                                <Typography variant="h5">Kiến thức</Typography>
-                            </Grid>
-                            <Grid item sx={{ cursor: 'pointer' }}>
-                                <Typography variant="h5">Góc nhìn</Typography>
-                            </Grid>
-                        </Grid>
-                    </Box>
-                    {/* <Pets sx={{ display: { xs: 'block', sm: 'none' } }} /> */}
-                    <Icons>
-                        <Badge badgeContent={4} color="error">
-                            <Mail />
-                        </Badge>
-                        <Badge badgeContent={2} color="error">
-                            <Notifications />
-                        </Badge>
-                        <Avatar
-                            sx={{ width: 30, height: 30 }}
-                            src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                            onClick={(e) => setOpen(true)}
-                        />
-                    </Icons>
-                    <UserBox onClick={(e) => setOpen(true)}>
-                        <Avatar
-                            sx={{ width: 30, height: 30 }}
-                            src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                        />
-                        <Typography variant="span">John</Typography>
-                    </UserBox>
-                </Toolbar>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
+                                <Grid item container sx={{ display: 'flex', alignItems: 'center', gap: '34px' }}>
+                                    <Grid
+                                        item
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '5px',
+                                            cursor: 'pointer',
+                                            fontFamily: 'monospace'
+                                        }}
+                                    >
+                                        <Typography variant="h5">Tin tức</Typography>
+                                        <KeyboardArrowDownIcon />
+                                    </Grid>
+                                    <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
+                                        <Typography variant="h5">Pháp lý</Typography>
+                                    </Grid>
+                                    <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
+                                        <Typography variant="h5">Kiến thức</Typography>
+                                    </Grid>
+                                    <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
+                                        <Typography variant="h5">Góc nhìn</Typography>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            {/* <Pets sx={{ display: { xs: 'block', sm: 'none' } }} /> */}
+                            <Icons>
+                                <Badge badgeContent={4} color="error">
+                                    <Mail />
+                                </Badge>
+                                <Badge badgeContent={2} color="error">
+                                    <Notifications />
+                                </Badge>
+                                <Avatar
+                                    sx={{ width: 30, height: 30 }}
+                                    src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                    onClick={(e) => setOpen(true)}
+                                />
+                            </Icons>
+                            <UserBox onClick={(e) => setOpen(true)}>
+                                <Avatar
+                                    sx={{ width: 30, height: 30 }}
+                                    src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                />
+                                <Typography variant="span">John</Typography>
+                            </UserBox>
+                        </Toolbar>
+                    </Container>
+                </Box>
                 {/* <Menu
                     id="demo-positioned-menu"
                     aria-labelledby="demo-positioned-button"
