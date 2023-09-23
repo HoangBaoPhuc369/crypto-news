@@ -19,7 +19,7 @@ import {
 import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import _ from 'lodash';
-import dataCrypto from './../data/crypto';
+import dataCrypto from '../../data/crypto';
 import numeral from 'numeral';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -62,7 +62,7 @@ const Header = () => {
             {/* <AppBar position="sticky" color="transparent">
                 
             </AppBar> */}
-            <AppBar position="sticky" sx={{ background: 'transparent', boxShadow: 'unset' }}>
+            <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'unset' }}>
                 <Box sx={{ backgroundColor: '#FFC20E' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
@@ -108,7 +108,7 @@ const Header = () => {
                     </Marquee>
                 </Box>
                 <Container maxWidth="lg">
-                        <Avatar sx={{ width: 90, height: 80, mt: '20px' }} src={logo} />
+                    <Avatar sx={{ width: 90, height: 80, mt: '20px' }} src={logo} />
                 </Container>
                 <Box sx={{ mt: '10px' }}>
                     <Container maxWidth="lg">
@@ -118,11 +118,12 @@ const Header = () => {
                                 justifyContent: 'space-between',
                                 alignContent: 'center',
                                 background: '#bb1919',
-                                borderRadius: '10px'
+                                borderRadius: '10px',
+                                height: '77px'
                             }}
                         >
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-                                <Grid item container sx={{ display: 'flex', alignItems: 'center', gap: '34px' }}>
+                                <Grid item container sx={{ display: 'flex', alignItems: 'center', gap: '34px', fontSize: '14px' }}>
                                     <Grid
                                         item
                                         sx={{
@@ -133,17 +134,17 @@ const Header = () => {
                                             fontFamily: 'monospace'
                                         }}
                                     >
-                                        <Typography variant="h5">Tin tức</Typography>
+                                        <Typography>Tin tức</Typography>
                                         <KeyboardArrowDownIcon />
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography variant="h5">Pháp lý</Typography>
+                                        <Typography>Pháp lý</Typography>
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography variant="h5">Kiến thức</Typography>
+                                        <Typography>Kiến thức</Typography>
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography variant="h5">Góc nhìn</Typography>
+                                        <Typography>Góc nhìn</Typography>
                                     </Grid>
                                 </Grid>
                             </Box>

@@ -1,6 +1,6 @@
 import { Box, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar, ListSubheader, Toolbar, Typography } from '@mui/material';
 import React from 'react';
-import imageData from '../../data/image';
+import imageData from '../../../data/image';
 import InfoIcon from '@mui/icons-material/Info';
 import _ from 'lodash';
 
