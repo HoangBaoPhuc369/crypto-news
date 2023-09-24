@@ -8,7 +8,7 @@ const CategoryNavbar = () => {
     return (
         <Toolbar
             sx={{
-                mt: '45px',
+                mt: '20px',
                 borderRadius: '15px',
                 background: '#F5F5F5',
                 height: '68px',

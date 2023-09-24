@@ -63,7 +63,7 @@ const Header = () => {
                 
             </AppBar> */}
             <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'unset' }}>
-                <Box sx={{ backgroundColor: '#FFC20E' }}>
+                <Box sx={{ backgroundColor: '#f5f5f5' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
                             {_.map(_.get(dataCrypto, 'data', []), (item, index) => (
@@ -78,22 +78,21 @@ const Header = () => {
                                     }}
                                     key={index}
                                 >
-                                    <Avatar sx={{ width: 22, height: 22 }} src={`${_.get(item, 'image', '')}`} />
+                                    <Avatar sx={{ width: 20, height: 20 }} src={`${_.get(item, 'image', '')}`} />
                                     <Box sx={{ display: 'flex', color: '#000' }} gap={0.5}>
-                                        <Typography fontSize={15}>{_.get(item, 'name', '')}</Typography>
-                                        <Typography sx={{ textTransform: 'uppercase' }} fontSize={15}>
+                                        <Typography fontSize={12.8}>{_.get(item, 'name', '')}</Typography>
+                                        <Typography sx={{ textTransform: 'uppercase' }} fontSize={12.8}>
                                             ({_.get(item, 'symbol', '')})
                                         </Typography>
                                     </Box>
                                     <Box
-                                        sx={{ display: 'flex' }}
-                                        gap={0.5}
+                                        sx={{ display: 'flex', alignItems: 'center' }}
                                         color={_.get(item, 'price_change_percentage_1h_in_currency', '') > 0 ? '#4b8800 ' : '#c2220d'}
                                     >
-                                        <Typography fontSize={15} fontWeight={'bold'}>
+                                        <Typography fontSize={12.8} fontWeight={'bold'} sx={{ marginRight: '5px' }}>
                                             ${_.get(item, 'current_price', '')}
                                         </Typography>
-                                        <Typography fontSize={15}>
+                                        <Typography fontSize={12.8}>
                                             ({numeral(_.get(item, 'price_change_percentage_1h_in_currency', '')).format('0.00')})
                                         </Typography>
                                         {_.get(item, 'price_change_percentage_1h_in_currency', '') > 0 ? (
