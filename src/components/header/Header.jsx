@@ -133,17 +133,17 @@ const Header = () => {
                                             fontFamily: 'monospace'
                                         }}
                                     >
-                                        <Typography>Tin tức</Typography>
+                                        <Typography>News</Typography>
                                         <KeyboardArrowDownIcon />
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography>Pháp lý</Typography>
+                                        <Typography>Our services</Typography>
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography>Kiến thức</Typography>
+                                        <Typography>Project Partners</Typography>
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography>Góc nhìn</Typography>
+                                        <Typography>Contract</Typography>
                                     </Grid>
                                 </Grid>
                             </Box>

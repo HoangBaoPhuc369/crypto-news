@@ -1,37 +1,37 @@
 const imageData = [
     {
-        img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-        title: 'Breakfast',
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-Hong-Kong-authorities-investigating-cryptocurrency-trading-platform-JPEX01.webp',
+        title: 'Cryptocurrency',
         author: '@bkristastucchio',
         rows: 2,
         cols: 2,
         featured: true
     },
     {
-        img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-        title: 'Burger',
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-Paris-Saint-Germain-football-club-with-NFTs04.webp',
+        title: 'Blockchain',
         author: '@rollelflex_graphy726'
     },
     {
-        img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-        title: 'Camera',
+        img: 'https://crypto.news/app/uploads/2023/07/MarketAcross-and-Chainlink-Labs-Establish-Channel-Partnership-To-Support-Chainlink-BUILD-Members04.jpg',
+        title: 'NFT Marketplace',
         author: '@helloimnik'
     },
     {
-        img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-        title: 'Coffee',
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-Blockchain-Economy-Dubai-Summit-2023-03.webp',
+        title: 'NFT Artists',
         author: '@nolanissac',
         cols: 2
     },
     {
-        img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-        title: 'Hats',
+        img: 'https://crypto.news/app/uploads/2023/05/crypto-news-Hacker-front-view-portrait-blockchain-and-artificial-intelligence-background-white-neon-color-cyber.jpg',
+        title: 'Altcoin trends',
         author: '@hjrc33',
         cols: 2
     },
     {
         img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-        title: 'Honey',
+        title: 'DeFi updates',
         author: '@arwinneil',
         rows: 2,
         cols: 2,

@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 import React from 'react';
 import image1 from '../../assets/images/test/1.jpg';
 import image2 from '../../assets/images/test/2.jpg';
@@ -11,7 +11,8 @@ const MainBanner = () => {
             <Grid item xs={12} lg={6}>
                 <Box sx={{ height: '546px', width: '100%' }}>
                     <img
-                        src={image1}
+                        // src={image1}
+                        src="https://crypto.news/app/uploads/2023/09/crypto-news-Police-seizing-bitcoin-mining-machines-in-Venezuela02.webp"
                         style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                         alt=""
                         loading="lazy"
@@ -30,7 +31,7 @@ const MainBanner = () => {
                             }}
                         >
                             <img
-                                src={image2}
+                                src="https://crypto.news/app/uploads/2023/09/crypto-news-GMO-Media-to-Launch-a-Verse-on-Oasys01.webp"
                                 style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                                 loading="lazy"
                                 alt=""
@@ -47,7 +48,7 @@ const MainBanner = () => {
                             }}
                         >
                             <img
-                                src={image3}
+                                src="https://crypto.news/app/uploads/2023/09/crypto-news-two-people-shaking-hands-office-background-day-light-low-poly-styl-v5.2.png"
                                 style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                                 loading="lazy"
                                 alt=""
@@ -64,7 +65,7 @@ const MainBanner = () => {
                             }}
                         >
                             <img
-                                src={image4}
+                                src="https://crypto.news/app/uploads/2023/06/crypto-news-Vitalik-Buterin-front-side-portrait-Ethereum-background-day-light-low-poly-st-v5.1.jpg"
                                 style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                                 loading="lazy"
                                 alt=""

@@ -3,14 +3,13 @@ import React from 'react';
 import CategoryNavbar from '../Navbar/CategoryNavbar';
 import MainBanner from '../banner/MainBanner';
 import HotNewsPost from '../sidePost/HotNewsPost';
+import FirstSection from '../section/FirstSection';
 
 const Body = () => {
     return (
-        <Container maxWidth="lg">
-            <MainBanner />
-            <CategoryNavbar />
-            <HotNewsPost />
-        </Container>
+        <>
+            <FirstSection />
+        </>
     );
 };
 

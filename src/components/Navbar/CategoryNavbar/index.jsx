@@ -1,4 +1,15 @@
-import { Box, Grid, IconButton, ImageList, ImageListItem, ImageListItemBar, ListSubheader, Toolbar, Typography } from '@mui/material';
+import {
+    Box,
+    Container,
+    Grid,
+    IconButton,
+    ImageList,
+    ImageListItem,
+    ImageListItemBar,
+    ListSubheader,
+    Toolbar,
+    Typography
+} from '@mui/material';
 import React from 'react';
 import imageData from '../../../data/image';
 import InfoIcon from '@mui/icons-material/Info';
@@ -50,6 +61,10 @@ const CategoryNavbar = () => {
                                                     position: 'absolute',
                                                     top: '50%',
                                                     left: '50%',
+                                                    width: '100%',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
                                                     transform: 'translate(-50%, -50%)',
                                                     color: '#fff',
                                                     fontSize: '16px',
