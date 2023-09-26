@@ -66,12 +66,13 @@ const HotNewsPost = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
                                     <img
-                                        src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                                        src="https://crypto.news/app/uploads/2023/07/Pomerdoge-POMD-to-bring-40x-more-gains-than-Pepe-PEPE-and-Shiba-Inu-SHIB05.jpg.webp"
                                         alt=""
                                         style={{
                                             width: '44px',
                                             height: '44px',
-                                            borderRadius: '12px'
+                                            borderRadius: '12px',
+                                            objectFit: 'cover'
                                         }}
                                     />
                                     <Box sx={{ flex: '1' }}>

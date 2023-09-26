@@ -1,14 +1,20 @@
-import { Box, Container, Grid, Toolbar, Typography } from '@mui/material';
 import React from 'react';
-import CategoryNavbar from '../Navbar/CategoryNavbar';
-import MainBanner from '../banner/MainBanner';
-import HotNewsPost from '../sidePost/HotNewsPost';
 import FirstSection from '../section/FirstSection';
+import PostPress from '../horizontal/PostPress';
+import SecondSection from '../section/SecondSection';
+import HotNewsPost from '../sidePost/HotNewsPost';
+import { Container } from '@mui/material';
 
 const Body = () => {
     return (
         <>
             <FirstSection />
+            <PostPress />
+            <SecondSection />
+            <PostPress />
+            <Container maxWidth={'lg'}>
+                <HotNewsPost />
+            </Container>
         </>
     );
 };
