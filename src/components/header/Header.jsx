@@ -24,6 +24,7 @@ import numeral from 'numeral';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import logo from '../../assets/images/logo-crypto-news.png';
+import logo2 from '../../assets/images/logo2.jpg';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const StyledButton = styled('div')({
@@ -63,6 +64,7 @@ const Header = () => {
                 
             </AppBar> */}
             <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'unset' }}>
+                {/* Thanh ngang hiển thị giá crypto */}
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
@@ -106,9 +108,12 @@ const Header = () => {
                         </Box>
                     </Marquee>
                 </Box>
+
                 <Container maxWidth="lg">
-                    <Avatar sx={{ width: 90, height: 80, mt: '20px' }} src={logo} />
+                    <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px', margin: '15px 0 0 0' }} alt="" />
                 </Container>
+
+                {/* Header */}
                 <Box sx={{ mt: '10px' }}>
                     <Container maxWidth="lg">
                         <Toolbar
@@ -116,7 +121,7 @@ const Header = () => {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignContent: 'center',
-                                background: '#bb1919',
+                                background: '#dd0802',
                                 borderRadius: '10px',
                                 height: '77px'
                             }}

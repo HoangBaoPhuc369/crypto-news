@@ -18,11 +18,7 @@ const Home = () => {
 
     return (
         <>
-            <Box bgcolor={'background.default'} color={'text.primary'}>
-                <Header />
-                <Body />
-                <Footer />
-            </Box>
+            <Body />
         </>
     );
 };
