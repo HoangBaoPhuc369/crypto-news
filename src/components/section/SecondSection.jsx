@@ -2,6 +2,7 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
+import { fakeDataPost3 } from '../../data/fakeDataPost';
 
 const SecondSection = () => {
     return (
@@ -34,7 +35,7 @@ const SecondSection = () => {
                 </Grid>
 
                 <Grid container xs={12} spacing={2}>
-                    {_.map([1, 2, 3, 4, 5, 6], (item, index) => {
+                    {_.map(fakeDataPost3, (item, index) => {
                         return (
                             <Grid item xs={6}>
                                 <Box
@@ -47,7 +48,7 @@ const SecondSection = () => {
                                     }}
                                 >
                                     <img
-                                        src="https://crypto.news/app/uploads/2023/09/crypto-news-indian-flag-low-poly-style.jpg.webp"
+                                        src={_.get(item, 'img')}
                                         alt=""
                                         style={{
                                             width: '340px',

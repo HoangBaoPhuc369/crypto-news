@@ -3,6 +3,7 @@ import React from 'react';
 import image4 from '../../assets/images/test/4.jpg';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
+import { fakeDataPost } from '../../data/fakeDataPost';
 
 const HotNewsPost = () => {
     return (
@@ -32,7 +33,7 @@ const HotNewsPost = () => {
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', padding: '10px', width: '100%' }}>
-                {_.map([1, 2, 3, 4], (item, index) => {
+                {_.map(fakeDataPost, (item, index) => {
                     return (
                         <Box
                             sx={{
@@ -43,7 +44,7 @@ const HotNewsPost = () => {
                                 padding: '10px'
                             }}
                         >
-                            <img src={image4} style={{ width: '100%', height: '190px', borderRadius: '12px', objectFit: 'cover' }} alt="" />
+                            <img src={_.get(item, 'img')} style={{ width: '100%', height: '190px', borderRadius: '12px', objectFit: 'cover' }} alt="" />
                             <Typography sx={{ color: '#3E3232', fontSize: '16px', fontWeight: '600', padding: '16px 0' }}>
                                 Opening Day of Boating Season, Seattle WA
                             </Typography>
@@ -66,7 +67,7 @@ const HotNewsPost = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
                                     <img
-                                        src="https://crypto.news/app/uploads/2023/07/Pomerdoge-POMD-to-bring-40x-more-gains-than-Pepe-PEPE-and-Shiba-Inu-SHIB05.jpg.webp"
+                                        src={_.get(item, 'avatar')}
                                         alt=""
                                         style={{
                                             width: '44px',

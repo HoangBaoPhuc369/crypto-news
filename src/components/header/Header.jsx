@@ -6,6 +6,7 @@ import {
     Box,
     Container,
     Grid,
+    InputAdornment,
     InputBase,
     List,
     ListItem,
@@ -13,6 +14,7 @@ import {
     Menu,
     MenuItem,
     styled,
+    TextField,
     Toolbar,
     Typography
 } from '@mui/material';
@@ -26,6 +28,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import logo from '../../assets/images/logo-crypto-news.png';
 import logo2 from '../../assets/images/logo2.jpg';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SearchIcon from '@mui/icons-material/Search';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -138,41 +141,53 @@ const Header = () => {
                                             fontFamily: 'monospace'
                                         }}
                                     >
-                                        <Typography>News</Typography>
+                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>News</Typography>
                                         <KeyboardArrowDownIcon />
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography>Our services</Typography>
+                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Our services</Typography>
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography>Project Partners</Typography>
+                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Project Partners</Typography>
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography>Contract</Typography>
+                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Contract</Typography>
                                     </Grid>
                                 </Grid>
                             </Box>
                             {/* <Pets sx={{ display: { xs: 'block', sm: 'none' } }} /> */}
+
                             <Icons>
-                                <Badge badgeContent={4} color="error">
-                                    <Mail />
-                                </Badge>
-                                <Badge badgeContent={2} color="error">
-                                    <Notifications />
-                                </Badge>
+                                <TextField
+                                    variant="standard"
+                                    placeholder="Search Anything..."
+                                    sx={{
+                                        background: '#f5f5f5',
+                                        borderRadius: '4px',
+                                        width: '227px',
+                                        '& .MuiInput-underline:before, & .MuiInput-underline:after': {
+                                            display: 'none'
+                                        },
+                                        padding: '8px 16px',
+                                        '& .MuiInputBase-input': {
+                                            padding: '0',
+                                            fontSize: '14px'
+                                        }
+                                    }}
+                                    size="small"
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <SearchIcon />
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                ></TextField>
                                 <Avatar
                                     sx={{ width: 30, height: 30 }}
                                     src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                                    onClick={(e) => setOpen(true)}
                                 />
                             </Icons>
-                            <UserBox onClick={(e) => setOpen(true)}>
-                                <Avatar
-                                    sx={{ width: 30, height: 30 }}
-                                    src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                                />
-                                <Typography variant="span">John</Typography>
-                            </UserBox>
                         </Toolbar>
                     </Container>
                 </Box>

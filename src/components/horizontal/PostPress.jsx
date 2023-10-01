@@ -1,6 +1,7 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import _ from 'lodash';
 import React from 'react';
+import { fakeDataPost2 } from '../../data/fakeDataPost';
 
 const PostPress = () => {
     return (
@@ -19,11 +20,11 @@ const PostPress = () => {
                                 <Typography sx={{ fontSize: '32px', color: '#fff' }}>partner content</Typography>
                             </Grid>
                             <Grid item xs={12} sx={{ display: 'flex' }}>
-                                {_.map([1, 2, 3, 4], (item, index) => {
+                                {_.map(fakeDataPost2, (item, index) => {
                                     return (
                                         <Box sx={{ margin: '0 15px', width: '252px' }}>
                                             <img
-                                                src="https://crypto.news/app/uploads/2023/07/crypto-news-the-trading-chart-is-rising-blurry-background-low-poly-sty.jpg.webp"
+                                                src={_.get(item, 'img')}
                                                 alt=""
                                                 style={{ width: '252px', height: '150px', borderRadius: '16px' }}
                                             />
