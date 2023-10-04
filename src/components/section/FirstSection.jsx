@@ -11,8 +11,8 @@ const FirstSection = () => {
             <Container maxWidth="lg" sx={{ minHeight: '100vh' }}>
                 <MainBanner />
                 <CategoryNavbar />
-                <HotNewsPost />
                 <PromotionBanner />
+                <HotNewsPost />
             </Container>
         </>
     );
