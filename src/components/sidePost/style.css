@@ -1,0 +1,33 @@
+.PostSideSwiper .swiper-wrapper {
+    padding: 10px;
+}
+
+.PostSideSwiper .swiper-button-prev::after,
+.PostSideSwiper .swiper-button-next::after {
+    content: '';
+}
+
+.PostSideSwiper .swiper-button-prev {
+    background-image: url('../../assets/images/button-arrow-icon.png');
+    width: 42px;
+    height: 42px;
+    background-color: white;
+    top: 25px;
+    left: 10px;
+    border-radius: 12px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.PostSideSwiper .swiper-button-next {
+    background-image: url('../../assets/images/button-arrow-icon.png');
+    width: 42px;
+    height: 42px;
+    background-color: white;
+    top: 25px;
+    right: 10px;
+    border-radius: 12px;
+    background-position: 50% 50%;
+    transform: rotate(180deg);
+    background-repeat: no-repeat;
+}

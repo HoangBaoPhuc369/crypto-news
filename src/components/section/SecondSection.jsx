@@ -3,12 +3,13 @@ import React from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
 import { fakeDataPost3 } from '../../data/fakeDataPost';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const SecondSection = () => {
     return (
         <Container maxWidth={'lg'}>
             <Grid container sx={{ marginBottom: '20px' }}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '35px' }}>
                     <Box sx={{ position: 'relative' }}>
                         <Typography
                             sx={{
@@ -17,7 +18,6 @@ const SecondSection = () => {
                                 color: '#bb1919',
                                 textTransform: 'uppercase',
                                 px: '10px',
-                                marginBottom: '40px',
                                 '&::after': {
                                     content: '""',
                                     position: 'absolute',
@@ -31,6 +31,20 @@ const SecondSection = () => {
                         >
                             cryptocurrency news
                         </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            padding: '10px 16px 10px 24px;',
+                            borderRadius: '12px',
+                            background: '#F5F5F5',
+                            marginRight: '15px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <Typography>Show All</Typography>
+                        <KeyboardArrowRightIcon />
                     </Box>
                 </Grid>
 

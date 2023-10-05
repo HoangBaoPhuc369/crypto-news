@@ -7,7 +7,7 @@ const PromotionBanner = () => {
         <>
             <Grid item container xs={12}>
                 <Grid item xs={12}>
-                    <img src={PlayHolderBanner} style={{ width: '100%', height: '120px', padding: '18px 0 18px 0' }} alt="" />
+                    <img src={PlayHolderBanner} style={{ width: '100%', height: '120px', padding: '18px 0 0 0' }} alt="" />
                 </Grid>
             </Grid>
         </>

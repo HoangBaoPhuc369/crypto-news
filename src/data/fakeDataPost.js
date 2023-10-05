@@ -18,6 +18,26 @@ export const fakeDataPost = [
         img: 'https://crypto.news/app/uploads/2023/09/crypto-news-hologram-coins-and-artificial-intelligence-Ukraine-flag-background-low-poly-st-v5.2.png.webp',
         title: 'ChatGPT endorses VC Spectra over Bitcoin Cash and Avalanche',
         avatar: 'https://crypto.news/app/uploads/2023/05/crypto-news-asian-man-is-wearing-a-virtual-reality-glasses-side-view-city-background-bright-neon-color-cyberpunk.jpeg.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-hacker-back-view-portrait-programm-coding-background-neon-color-cyberpunk.jpg.webp',
+        title: 'FTX hacker moves $4.2m worth of ETH after months of inactivity',
+        avatar: 'https://crypto.news/app/uploads/2023/09/crypto-news-AI-wont-realize-its-potential-without-web304.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-new-Cryptocurrency-awareness-vs-knowledge01.webp',
+        title: 'Cryptocurrency awareness vs knowledge: To educate to empower | Opinion',
+        avatar: 'https://crypto.news/app/uploads/2023/06/InQubeta-QUBE08.jpg.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-Bitcoin-price-prediction-2024-01.webp',
+        title: 'Connecticut authorities recover $3m worth of Bitcoin from scammers',
+        avatar: 'https://crypto.news/app/uploads/2023/09/Grimace-Analyzing-the-Prospect-of-Overcoming-Ethereum-and-Litecoin02-1.png.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-hologram-coins-and-artificial-intelligence-Ukraine-flag-background-low-poly-st-v5.2.png.webp',
+        title: 'ChatGPT endorses VC Spectra over Bitcoin Cash and Avalanche',
+        avatar: 'https://crypto.news/app/uploads/2023/05/crypto-news-asian-man-is-wearing-a-virtual-reality-glasses-side-view-city-background-bright-neon-color-cyberpunk.jpeg.webp'
     }
 ];
 
@@ -39,6 +59,26 @@ export const fakeDataPost2 = [
     },
     {
         img: 'https://crypto.news/app/uploads/2023/09/crypto-news-Bitcoin-and-coinbase04.webp',
+        title: 'ChatGPT endorses VC Spectra over Bitcoin Cash and Avalanche',
+        avatar: 'https://crypto.news/app/uploads/2023/05/crypto-news-asian-man-is-wearing-a-virtual-reality-glasses-side-view-city-background-bright-neon-color-cyberpunk.jpeg.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-hacker-back-view-portrait-programm-coding-background-neon-color-cyberpunk.jpg.webp',
+        title: 'FTX hacker moves $4.2m worth of ETH after months of inactivity',
+        avatar: 'https://crypto.news/app/uploads/2023/09/crypto-news-AI-wont-realize-its-potential-without-web304.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-new-Cryptocurrency-awareness-vs-knowledge01.webp',
+        title: 'Cryptocurrency awareness vs knowledge: To educate to empower | Opinion',
+        avatar: 'https://crypto.news/app/uploads/2023/06/InQubeta-QUBE08.jpg.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-Bitcoin-price-prediction-2024-01.webp',
+        title: 'Connecticut authorities recover $3m worth of Bitcoin from scammers',
+        avatar: 'https://crypto.news/app/uploads/2023/09/Grimace-Analyzing-the-Prospect-of-Overcoming-Ethereum-and-Litecoin02-1.png.webp'
+    },
+    {
+        img: 'https://crypto.news/app/uploads/2023/09/crypto-news-hologram-coins-and-artificial-intelligence-Ukraine-flag-background-low-poly-st-v5.2.png.webp',
         title: 'ChatGPT endorses VC Spectra over Bitcoin Cash and Avalanche',
         avatar: 'https://crypto.news/app/uploads/2023/05/crypto-news-asian-man-is-wearing-a-virtual-reality-glasses-side-view-city-background-bright-neon-color-cyberpunk.jpeg.webp'
     }

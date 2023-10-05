@@ -14,14 +14,12 @@ import React, { useCallback, useRef } from 'react';
 import imageData from '../../../data/image';
 import InfoIcon from '@mui/icons-material/Info';
 import _ from 'lodash';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './style.css';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const CategoryNavbar = () => {
     // const sliderRef = useRef(null);
