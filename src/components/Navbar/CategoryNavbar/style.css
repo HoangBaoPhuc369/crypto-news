@@ -9,3 +9,30 @@
     justify-content: center;
     align-items: center; */
 }
+
+.CategorySwiper .swiper-button-prev::after, .CategorySwiper .swiper-button-next::after {
+    content: '';
+}
+
+.CategorySwiper .swiper-button-prev {
+    background-image: url("../../../assets/images/icons8-arrow-64.png");
+    width: 42px;
+    height: 42px;
+    background-color: white;
+    top: 25px;
+    left: 10px;
+    border-radius: 50%;
+    background-position: 50% 50%;
+}
+
+.CategorySwiper .swiper-button-next {
+    background-image: url("../../../assets/images/icons8-arrow-64.png");
+    width: 42px;
+    height: 42px;
+    background-color: white;
+    top: 25px;
+    right: 10px;
+    border-radius: 50%;
+    background-position: 50% 50%;
+    transform: rotate(180deg);
+}

@@ -10,7 +10,7 @@ import {
     Toolbar,
     Typography
 } from '@mui/material';
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import imageData from '../../../data/image';
 import InfoIcon from '@mui/icons-material/Info';
 import _ from 'lodash';
@@ -20,8 +20,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './style.css';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const CategoryNavbar = () => {
+    // const sliderRef = useRef(null);
+
+    // const handlePrev = useCallback(() => {
+    //     if (!sliderRef.current) return;
+    //     sliderRef.current.swiper.slidePrev();
+    //   }, []);
+    
+    //   const handleNext = useCallback(() => {
+    //     if (!sliderRef.current) return;
+    //     sliderRef.current.swiper.slideNext();
+    //   }, []);
+
     return (
         <Toolbar
             sx={{
@@ -34,12 +48,12 @@ const CategoryNavbar = () => {
                 overflowX: 'hidden'
             }}
         >
-            <Grid item xs={12} sx={{ width: '100%' }}>
+            <Grid item xs={12} sx={{ width: '100%', position: 'relative' }}>
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={6}
+                    // ref={sliderRef}
                     navigation={true}
-                    // centeredSlides={true}
                     modules={[Navigation]}
                     className="CategorySwiper"
                 >
@@ -91,6 +105,12 @@ const CategoryNavbar = () => {
                         );
                     })}
                 </Swiper>
+                
+                {/* <Box className="prev-arrow" sx={{position: 'absolute', top: '0', left: 0, zIndex: '10', width: '60px', height: '48px', background: 'rgba(0, 0, 0, 0.2)', filter: 'blur(5px)'}}></Box>
+                <ArrowBackIosNewIcon onClick={handlePrev}  sx={{position: 'absolute', top: '25%', left: 10, zIndex: '9999', cursor: 'pointer', color: '#ffff'}} />
+                
+                <Box className="next-arrow"  sx={{position: 'absolute', top: 0, right: 0, zIndex: '10', width: '60px', height: '48px', background: 'rgba(0, 0, 0, 0.2)', filter: 'blur(5px)'}}></Box>
+                <ArrowForwardIosIcon onClick={handleNext} sx={{position: 'absolute', top: '25%', right: 10, zIndex: '9999', cursor: 'pointer', color: '#ffff'}} /> */}
             </Grid>
         </Toolbar>
     );
