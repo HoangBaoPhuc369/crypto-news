@@ -26,7 +26,7 @@ import numeral from 'numeral';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import logo from '../../assets/images/logo-crypto-news.png';
-import logo2 from '../../assets/images/logo2.jpg';
+import logo2 from '../../assets/images/logo-white.png';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -68,6 +68,13 @@ const Header = () => {
             </AppBar> */}
             <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'unset' }}>
                 {/* Thanh ngang hiển thị giá crypto */}
+                <Grid xs={12}>
+                    <img
+                        src="https://crypto.news/app/uploads/2023/09/crypto-news-trading-down03.webp"
+                        alt=""
+                        style={{ width: '100%', height: '300px', objectFit: 'cover' }}
+                    />
+                </Grid>
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
@@ -112,19 +119,19 @@ const Header = () => {
                     </Marquee>
                 </Box>
 
-                <Container maxWidth="lg">
+                {/* <Container maxWidth="lg">
                     <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px', margin: '15px 0 0 0' }} alt="" />
-                </Container>
+                </Container> */}
 
                 {/* Header */}
-                <Box sx={{ mt: '10px' }}>
+                <Box sx={{ mt: '30px' }}>
                     <Container maxWidth="lg">
                         <Toolbar
                             sx={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignContent: 'center',
-                                background: '#dd0802',
+                                background: '#de0b02',
                                 borderRadius: '10px',
                                 height: '77px'
                             }}
@@ -141,8 +148,20 @@ const Header = () => {
                                             fontFamily: 'monospace'
                                         }}
                                     >
+                                        <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px' }} alt="" />
+                                    </Grid>
+                                    <Grid
+                                        item
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '5px',
+                                            cursor: 'pointer',
+                                            fontFamily: 'monospace'
+                                        }}
+                                    >
                                         <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>News</Typography>
-                                        <KeyboardArrowDownIcon />
+                                        {/* <KeyboardArrowDownIcon /> */}
                                     </Grid>
                                     <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
                                         <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Our services</Typography>
@@ -183,10 +202,10 @@ const Header = () => {
                                         )
                                     }}
                                 ></TextField>
-                                <Avatar
+                                {/* <Avatar
                                     sx={{ width: 30, height: 30 }}
                                     src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                                />
+                                /> */}
                             </Icons>
                         </Toolbar>
                     </Container>

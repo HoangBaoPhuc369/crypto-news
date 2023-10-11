@@ -13,7 +13,7 @@ import { Navigation } from 'swiper/modules';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
-const HotNewsPost = () => {
+const SidePost = ({title}) => {
     const sliderRef = useRef(null);
 
     const handlePrev = useCallback(() => {
@@ -45,7 +45,7 @@ const HotNewsPost = () => {
                             px: '10px'
                         }}
                     >
-                        Hot News
+                        {title}
                     </Typography>
                 </Box>
                 <Box sx={{ display: 'flex', marginRight: '30px', gap: '20px' }}>
@@ -178,4 +178,4 @@ const HotNewsPost = () => {
     );
 };
 
-export default HotNewsPost;
+export default SidePost;

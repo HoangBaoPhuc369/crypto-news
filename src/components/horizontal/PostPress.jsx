@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 
-const PostPress = () => {
+const PostPress = ({ title }) => {
     return (
         <Grid item container>
             <Grid item xs={12}>
@@ -20,7 +20,7 @@ const PostPress = () => {
                     <Container maxWidth={'lg'} sx={{ padding: '24px 0' }}>
                         <Grid container>
                             <Grid item xs={12} sx={{ marginBottom: '30px' }}>
-                                <Typography sx={{ fontSize: '32px', color: '#17191a', fontWeight: '600' }}>partner content</Typography>
+                                <Typography sx={{ fontSize: '32px', color: '#17191a', fontWeight: '600' }}>{title}</Typography>
                             </Grid>
                             <Grid item xs={12} sx={{ display: 'flex' }}>
                                 <Swiper

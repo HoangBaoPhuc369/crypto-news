@@ -4,16 +4,17 @@ import PostPress from '../horizontal/PostPress';
 import SecondSection from '../section/SecondSection';
 import HotNewsPost from '../sidePost/HotNewsPost';
 import { Container } from '@mui/material';
+import SidePost from '../sidePost/SidePost';
 
 const Body = () => {
     return (
         <>
             <FirstSection />
-            <PostPress />
+            <PostPress title="press release" />
             <SecondSection />
-            <PostPress />
+            <PostPress title="partner content" />
             <Container maxWidth={'lg'}>
-                <HotNewsPost />
+                <SidePost title="Some Things You Missed" />
             </Container>
         </>
     );

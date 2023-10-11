@@ -8,25 +8,23 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 const SecondSection = () => {
     return (
         <Container maxWidth={'lg'}>
-            <Grid container sx={{ marginBottom: '20px' }}>
+            <Grid container sx={{ marginBottom: '40px' }}>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '35px' }}>
-                    <Box sx={{ position: 'relative' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Box
+                            sx={{
+                                width: '5px',
+                                height: '18px',
+                                backgroundColor: '#de0b02'
+                            }}
+                        />
                         <Typography
                             sx={{
                                 fontSize: '20px',
                                 fontWeight: '500',
-                                color: '#bb1919',
+                                color: '#de0b02',
                                 textTransform: 'uppercase',
-                                px: '10px',
-                                '&::after': {
-                                    content: '""',
-                                    position: 'absolute',
-                                    top: '6px',
-                                    background: '#bb1919',
-                                    left: '0',
-                                    height: '55%',
-                                    width: '7px'
-                                }
+                                px: '10px'
                             }}
                         >
                             cryptocurrency news

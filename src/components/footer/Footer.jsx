@@ -4,6 +4,10 @@ import logo2 from '../../assets/images/logo2.jpg';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneCallbackIcon from '@mui/icons-material/PhoneCallback';
 import _ from 'lodash';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 const Footer = () => {
     return (
@@ -17,13 +21,13 @@ const Footer = () => {
                                     sx={{
                                         fontSize: '20px',
                                         fontWeight: '500',
-                                        color: '#bb1919',
+                                        color: '#de0b02',
                                         px: '10px',
                                         '&::after': {
                                             content: '""',
                                             position: 'absolute',
                                             top: '6px',
-                                            background: '#bb1919',
+                                            background: '#de0b02',
                                             left: '0',
                                             height: '55%',
                                             width: '7px'
@@ -57,13 +61,13 @@ const Footer = () => {
                                     sx={{
                                         fontSize: '20px',
                                         fontWeight: '500',
-                                        color: '#bb1919',
+                                        color: '#de0b02',
                                         px: '10px',
                                         '&::after': {
                                             content: '""',
                                             position: 'absolute',
                                             top: '6px',
-                                            background: '#bb1919',
+                                            background: '#de0b02',
                                             left: '0',
                                             height: '55%',
                                             width: '7px'
@@ -111,30 +115,65 @@ const Footer = () => {
                                     sx={{
                                         fontSize: '20px',
                                         fontWeight: '500',
-                                        color: '#bb1919',
+                                        color: '#de0b02',
                                         px: '10px',
                                         '&::after': {
                                             content: '""',
                                             position: 'absolute',
                                             top: '6px',
-                                            background: '#bb1919',
+                                            background: '#de0b02',
                                             left: '0',
                                             height: '55%',
                                             width: '7px'
                                         }
                                     }}
                                 >
-                                    Page
+                                    Social
                                 </Typography>
                             </Box>
                         </Grid>
 
                         <Grid item xs={12}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>News</Typography>
-                                <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Our services</Typography>
-                                <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Project Partners</Typography>
-                                <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Contract</Typography>
+                            <Box sx={{ display: 'flex', gap: '15px' }}>
+                                <Box
+                                    sx={{
+                                        background: '#de0b02',
+                                        width: '30px',
+                                        height: '30px',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}
+                                >
+                                    <TelegramIcon sx={{ color: '#fff', fontSize: '20px' }} />
+                                </Box>
+                                <Box
+                                    sx={{
+                                        background: '#de0b02',
+                                        width: '30px',
+                                        height: '30px',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}
+                                >
+                                    <YouTubeIcon sx={{ color: '#fff', fontSize: '20px' }} />
+                                </Box>
+                                <Box
+                                    sx={{
+                                        background: '#de0b02',
+                                        width: '30px',
+                                        height: '30px',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}
+                                >
+                                    <TwitterIcon sx={{ color: '#fff', fontSize: '20px' }} />
+                                </Box>
                             </Box>
                         </Grid>
                     </Grid>
