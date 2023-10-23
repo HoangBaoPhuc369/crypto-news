@@ -4,31 +4,15 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
 import { fakeDataPost3 } from '../../data/fakeDataPost';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import TitleBody from '../title/TitleBody';
 
 const SecondSection = () => {
     return (
         <Container maxWidth={'lg'}>
             <Grid container sx={{ marginBottom: '40px' }}>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '35px' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Box
-                            sx={{
-                                width: '5px',
-                                height: '18px',
-                                backgroundColor: '#de0b02'
-                            }}
-                        />
-                        <Typography
-                            sx={{
-                                fontSize: '20px',
-                                fontWeight: '500',
-                                color: '#de0b02',
-                                textTransform: 'uppercase',
-                                px: '10px'
-                            }}
-                        >
-                            cryptocurrency news
-                        </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                        <TitleBody title="cryptocurrency news" />
                     </Box>
                     <Box
                         sx={{

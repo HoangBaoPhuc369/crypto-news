@@ -12,6 +12,7 @@ import './style.css';
 import { Navigation } from 'swiper/modules';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import TitleBody from '../title/TitleBody';
 
 const HotNewsPost = () => {
     const sliderRef = useRef(null);
@@ -28,25 +29,8 @@ const HotNewsPost = () => {
     return (
         <Grid item container sx={{ marginBottom: '40px' }}>
             <Grid item xs={12} sx={{ margin: '35px 0 20px 0', display: 'flex', justifyContent: 'space-between' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box
-                        sx={{
-                            width: '5px',
-                            height: '18px',
-                            backgroundColor: '#de0b02'
-                        }}
-                    />
-                    <Typography
-                        sx={{
-                            fontSize: '20px',
-                            fontWeight: '500',
-                            color: '#de0b02',
-                            textTransform: 'uppercase',
-                            px: '10px'
-                        }}
-                    >
-                        Hot News
-                    </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                    <TitleBody title="Hot News" />
                 </Box>
                 <Box sx={{ display: 'flex', marginRight: '30px', gap: '20px' }}>
                     <Box

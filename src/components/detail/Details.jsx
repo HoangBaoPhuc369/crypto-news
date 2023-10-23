@@ -8,6 +8,9 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
 import ReplyIcon from '@mui/icons-material/Reply';
 import SidePost from '../sidePost/SidePost';
+import TitleBody from '../title/TitleBody';
+import SvgIcon from '../../components/svg';
+import MessageRoundedIcon from '@mui/icons-material/MessageRounded';
 
 const Details = () => {
     return (
@@ -108,26 +111,7 @@ const Details = () => {
 
                         <Grid item xs={12} sx={{ margin: '0 0 30px 0' }}>
                             <Box sx={{ position: 'relative' }}>
-                                <Typography
-                                    sx={{
-                                        fontSize: '20px',
-                                        fontWeight: '500',
-                                        color: '#dd0802',
-                                        px: '10px',
-                                        textTransform: 'uppercase',
-                                        '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            top: '6px',
-                                            background: '#dd0802',
-                                            left: '0',
-                                            height: '55%',
-                                            width: '7px'
-                                        }
-                                    }}
-                                >
-                                    Comments
-                                </Typography>
+                                <TitleBody title="Comments" />
                             </Box>
                         </Grid>
 
@@ -170,148 +154,66 @@ const Details = () => {
                                         </Box>
                                     </Box>
                                 </Box>
-                                <Button
-                                    variant="contained"
-                                    sx={{
-                                        width: '100px',
-                                        height: '40px',
-                                        borderRadius: '12px',
-                                        textTransform: 'none',
-                                        color: '#3E323280',
-                                        backgroundColor: '#3E32320D'
-                                    }}
-                                    startIcon={<ReplyIcon />}
-                                    color="error"
-                                >
-                                    Reply
-                                </Button>
                             </Box>
                             <Box component={'p'} sx={{ margin: '0', marginBottom: '15px' }}>
                                 When you are ready to indulge your sense of excitement, check out the range of water- sports opportunities
                                 at the resort’s on-site water-sports center. Want to leave your stress on the water? The resort has kayaks,
                                 paddleboards, or the low-key pedal boats.fthtgjytr
                             </Box>
-
-                            <Grid
-                                item
-                                xs={12}
-                                sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    gap: '15px'
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        padding: '15px 30px 20px 15px',
-                                        flexDirection: 'column',
-                                        gap: '15px',
-                                        backgroundColor: '#ffff',
-                                        borderRadius: '16px',
-                                        width: 'calc(100% - 150px)'
-                                    }}
-                                >
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between'
-                                        }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                gap: '10px'
-                                            }}
-                                        >
-                                            <img
-                                                src="https://crypto.news/app/uploads/2023/08/Pepe-Coin01.jpg.webp"
-                                                style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '16px' }}
-                                                alt=""
-                                            />
-                                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '3px' }}>
-                                                <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Jon Kantner</Typography>
-                                                <Box sx={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                                                    <CalendarMonthIcon sx={{ color: '#3E323280', fontSize: '16px' }} />
-                                                    <Typography
-                                                        sx={{ fontSize: '14px', fontWeight: '500', color: 'rgba(62, 50, 50, 0.75)' }}
-                                                    >
-                                                        2022 04 July
-                                                    </Typography>
-                                                </Box>
-                                            </Box>
-                                        </Box>
-                                    </Box>
-                                    <Box component={'p'} sx={{ margin: '0' }}>
-                                        When you are ready to indulge your sense of excitement, check out the range of water- sports
-                                        opportunities at the resort’s on-site water-sports center. Want to leave your stress on the water?
-                                        The resort has kayaks, paddleboards, or the low-key pedal boats.
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between'
-                                        }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                gap: '10px'
-                                            }}
-                                        >
-                                            <img
-                                                src="https://crypto.news/app/uploads/2023/08/Pepe-Coin01.jpg.webp"
-                                                style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '16px' }}
-                                                alt=""
-                                            />
-                                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '3px' }}>
-                                                <Typography sx={{ fontSize: '16px', fontWeight: '600' }}>Jon Kantner</Typography>
-                                                <Box sx={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                                                    <CalendarMonthIcon sx={{ color: '#3E323280', fontSize: '16px' }} />
-                                                    <Typography
-                                                        sx={{ fontSize: '14px', fontWeight: '500', color: 'rgba(62, 50, 50, 0.75)' }}
-                                                    >
-                                                        2022 04 July
-                                                    </Typography>
-                                                </Box>
-                                            </Box>
-                                        </Box>
-                                    </Box>
-                                    <Box component={'p'} sx={{ margin: '0' }}>
-                                        When you are ready to indulge your sense of excitement, check out the range of water- sports
-                                        opportunities at the resort’s on-site water-sports center. Want to leave your stress on the water?
-                                        The resort has kayaks, paddleboards, or the low-key pedal boats.
-                                    </Box>
-                                </Box>
-                            </Grid>
                         </Grid>
 
                         <Grid item xs={12} sx={{ margin: '40px 0 30px 0' }}>
                             <Box sx={{ position: 'relative' }}>
-                                <Typography
-                                    sx={{
-                                        fontSize: '20px',
-                                        fontWeight: '500',
-                                        color: '#dd0802',
-                                        px: '10px',
-                                        textTransform: 'uppercase',
-                                        '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            top: '6px',
-                                            background: '#dd0802',
-                                            left: '0',
-                                            height: '55%',
-                                            width: '7px'
-                                        }
-                                    }}
-                                >
-                                    Add Comment
-                                </Typography>
+                                <TitleBody title="Add Comment" />
                             </Box>
+                        </Grid>
+
+                        <Grid item xs={12} sx={{ display: 'flex', gap: '10px' }}>
+                            <Grid
+                                xs={6}
+                                sx={{
+                                    padding: '10px',
+                                    background: '#F5F5F5',
+                                    borderRadius: '12px',
+                                    height: '58px',
+                                    marginBottom: '10px'
+                                }}
+                            >
+                                <TextField
+                                    placeholder="Name"
+                                    disableOutline={true}
+                                    variant="standard"
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        '& .MuiInput-underline:before, & .MuiInput-underline:after': {
+                                            display: 'none'
+                                        },
+                                        marginBottom: '10px',
+                                        borderRadius: '12px'
+                                    }}
+                                ></TextField>
+                            </Grid>
+
+                            <Grid
+                                xs={6}
+                                sx={{ padding: '10px', background: '#F5F5F5', borderRadius: '12px', height: '58px', marginBottom: '10px' }}
+                            >
+                                <TextField
+                                    placeholder="Email"
+                                    disableOutline={true}
+                                    variant="standard"
+                                    sx={{
+                                        width: '100%',
+                                        height: '100%',
+                                        '& .MuiInput-underline:before, & .MuiInput-underline:after': {
+                                            display: 'none'
+                                        },
+                                        marginBottom: '10px',
+                                        borderRadius: '12px'
+                                    }}
+                                ></TextField>
+                            </Grid>
                         </Grid>
 
                         <Grid item xs={12}>
@@ -332,9 +234,18 @@ const Details = () => {
                                     }}
                                 ></TextField>
                                 <Button
-                                    sx={{ float: 'right', textTransform: 'unset', marginTop: '20px' }}
-                                    color="error"
-                                    startIcon={<SendIcon />}
+                                    sx={{
+                                        float: 'right',
+                                        textTransform: 'unset',
+                                        marginTop: '20px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        color: '#ffff',
+                                        backgroundColor: '#de0b02',
+                                        px: '15px',
+                                        '&:hover': { backgroundColor: '#ea4343' }
+                                    }}
+                                    startIcon={<MessageRoundedIcon />}
                                 >
                                     Send Comment
                                 </Button>
@@ -347,26 +258,7 @@ const Details = () => {
                                 <Grid item xs={12}>
                                     <Grid item xs={12} sx={{ margin: '20px 0 10px 0', padding: '20px 15px 0' }}>
                                         <Box sx={{ position: 'relative' }}>
-                                            <Typography
-                                                sx={{
-                                                    fontSize: '20px',
-                                                    fontWeight: '500',
-                                                    color: '#de0b02',
-                                                    px: '10px',
-                                                    textTransform: 'uppercase',
-                                                    '&::after': {
-                                                        content: '""',
-                                                        position: 'absolute',
-                                                        top: '6px',
-                                                        background: '#de0b02',
-                                                        left: '0',
-                                                        height: '55%',
-                                                        width: '7px'
-                                                    }
-                                                }}
-                                            >
-                                                Tags
-                                            </Typography>
+                                            <TitleBody title="Tags" />
                                         </Box>
                                     </Grid>
                                 </Grid>
@@ -398,26 +290,7 @@ const Details = () => {
                                 <Grid item xs={12}>
                                     <Grid item xs={12} sx={{ margin: '20px 0 10px 0', padding: '20px 15px 0' }}>
                                         <Box sx={{ position: 'relative' }}>
-                                            <Typography
-                                                sx={{
-                                                    fontSize: '20px',
-                                                    fontWeight: '500',
-                                                    color: '#de0b02',
-                                                    px: '10px',
-                                                    textTransform: 'uppercase',
-                                                    '&::after': {
-                                                        content: '""',
-                                                        position: 'absolute',
-                                                        top: '6px',
-                                                        background: '#de0b02',
-                                                        left: '0',
-                                                        height: '55%',
-                                                        width: '7px'
-                                                    }
-                                                }}
-                                            >
-                                                Top Post
-                                            </Typography>
+                                            <TitleBody title="Top Post" />
                                         </Box>
                                     </Grid>
                                 </Grid>

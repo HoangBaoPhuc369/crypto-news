@@ -8,6 +8,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import TitleBody from '../title/TitleBody';
 
 const Footer = () => {
     return (
@@ -17,25 +18,7 @@ const Footer = () => {
                     <Grid item xs={4}>
                         <Grid item xs={12} sx={{}}>
                             <Box sx={{ position: 'relative' }}>
-                                <Typography
-                                    sx={{
-                                        fontSize: '20px',
-                                        fontWeight: '500',
-                                        color: '#de0b02',
-                                        px: '10px',
-                                        '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            top: '6px',
-                                            background: '#de0b02',
-                                            left: '0',
-                                            height: '55%',
-                                            width: '7px'
-                                        }
-                                    }}
-                                >
-                                    About
-                                </Typography>
+                                <TitleBody title="About" />
                             </Box>
                         </Grid>
                         <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px', margin: '15px 0' }} alt="" />
@@ -57,25 +40,7 @@ const Footer = () => {
                     <Grid item xs={4}>
                         <Grid item xs={12} sx={{}}>
                             <Box sx={{ position: 'relative', marginBottom: '15px' }}>
-                                <Typography
-                                    sx={{
-                                        fontSize: '20px',
-                                        fontWeight: '500',
-                                        color: '#de0b02',
-                                        px: '10px',
-                                        '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            top: '6px',
-                                            background: '#de0b02',
-                                            left: '0',
-                                            height: '55%',
-                                            width: '7px'
-                                        }
-                                    }}
-                                >
-                                    Recent Post
-                                </Typography>
+                                <TitleBody title="Recent Post" />
                             </Box>
                         </Grid>
                         <Box sx={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
@@ -111,25 +76,7 @@ const Footer = () => {
                     <Grid item xs={4}>
                         <Grid item xs={12} sx={{}}>
                             <Box sx={{ position: 'relative', marginBottom: '15px' }}>
-                                <Typography
-                                    sx={{
-                                        fontSize: '20px',
-                                        fontWeight: '500',
-                                        color: '#de0b02',
-                                        px: '10px',
-                                        '&::after': {
-                                            content: '""',
-                                            position: 'absolute',
-                                            top: '6px',
-                                            background: '#de0b02',
-                                            left: '0',
-                                            height: '55%',
-                                            width: '7px'
-                                        }
-                                    }}
-                                >
-                                    Social
-                                </Typography>
+                                <TitleBody title="Social" />
                             </Box>
                         </Grid>
 

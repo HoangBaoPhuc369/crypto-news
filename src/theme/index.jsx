@@ -14,31 +14,31 @@ import componentsOverride from './overrides';
 // ----------------------------------------------------------------------
 
 ThemeProvider.propTypes = {
-  children: PropTypes.node,
+    children: PropTypes.node
 };
 
 export default function ThemeProvider({ children }) {
-  const themeOptions = useMemo(
-    () => ({
-      palette,
-      shape: { borderRadius: 6 },
-      typography,
-      shadows: shadows(),
-      customShadows: customShadows(),
-    }),
-    []
-  );
+    const themeOptions = useMemo(
+        () => ({
+            palette,
+            shape: { borderRadius: 6 },
+            typography,
+            shadows: shadows(),
+            customShadows: customShadows()
+        }),
+        []
+    );
 
-  const theme = createTheme(themeOptions);
-  theme.components = componentsOverride(theme);
+    const theme = createTheme(themeOptions);
+    theme.components = componentsOverride(theme);
 
-  return (
-    <StyledEngineProvider injectFirst>
-      <MUIThemeProvider theme={theme}>
-        <CssBaseline />
-        <GlobalStyles />
-        {children}
-      </MUIThemeProvider>
-    </StyledEngineProvider>
-  );
+    return (
+        <StyledEngineProvider injectFirst>
+            <MUIThemeProvider theme={theme}>
+                <CssBaseline />
+                <GlobalStyles />
+                {children}
+            </MUIThemeProvider>
+        </StyledEngineProvider>
+    );
 }

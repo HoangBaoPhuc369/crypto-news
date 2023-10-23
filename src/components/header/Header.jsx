@@ -5,6 +5,7 @@ import {
     Badge,
     Box,
     Container,
+    Divider,
     Grid,
     InputAdornment,
     InputBase,
@@ -13,6 +14,8 @@ import {
     ListItemText,
     Menu,
     MenuItem,
+    Popover,
+    Stack,
     styled,
     TextField,
     Toolbar,
@@ -27,8 +30,11 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import logo from '../../assets/images/logo-crypto-news.png';
 import logo2 from '../../assets/images/logo-white.png';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import SearchIcon from '@mui/icons-material/Search';
+import { category } from '../../data/categoryData';
+import { useTheme } from '@mui/material/styles';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -59,8 +65,39 @@ const UserBox = styled(Box)(({ theme }) => ({
     }
 }));
 
+const tabs = [
+    {
+        label: 'News',
+        to: '',
+        hasSubtab: true
+    },
+    {
+        label: 'Our services',
+        to: ''
+    },
+    {
+        label: 'Project Partners',
+        to: ''
+    },
+    {
+        label: 'Contract',
+        to: ''
+    }
+];
+
 const Header = () => {
-    const [open, setOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        if (anchorEl !== event.currentTarget) {
+            setAnchorEl(event.currentTarget);
+        }
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <>
             {/* <AppBar position="sticky" color="transparent">
@@ -137,7 +174,11 @@ const Header = () => {
                             }}
                         >
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-                                <Grid item container sx={{ display: 'flex', alignItems: 'center', gap: '34px', fontSize: '14px' }}>
+                                <Grid
+                                    item
+                                    container
+                                    sx={{ display: 'flex', alignItems: 'center', gap: '34px', fontSize: '14px', height: '100%' }}
+                                >
                                     <Grid
                                         item
                                         sx={{
@@ -150,28 +191,63 @@ const Header = () => {
                                     >
                                         <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px' }} alt="" />
                                     </Grid>
-                                    <Grid
-                                        item
-                                        sx={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '5px',
-                                            cursor: 'pointer',
-                                            fontFamily: 'monospace'
-                                        }}
-                                    >
-                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>News</Typography>
-                                        {/* <KeyboardArrowDownIcon /> */}
-                                    </Grid>
-                                    <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Our services</Typography>
-                                    </Grid>
-                                    <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Project Partners</Typography>
-                                    </Grid>
-                                    <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                        <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>Contract</Typography>
-                                    </Grid>
+                                    {_.map(tabs, (item, index) => {
+                                        return Boolean(_.get(item, 'hasSubtab')) ? (
+                                            <div>
+                                                <Grid
+                                                    item
+                                                    sx={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '3px',
+                                                        cursor: 'pointer',
+                                                        fontFamily: 'monospace',
+                                                        height: '100%'
+                                                    }}
+                                                    aria-owns={anchorEl ? 'simple-menu' : undefined}
+                                                    aria-haspopup="true"
+                                                    onClick={handleClick}
+                                                    onMouseOver={handleClick}
+                                                >
+                                                    <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
+                                                        {_.get(item, 'label', '')}
+                                                    </Typography>
+                                                    {anchorEl ? (
+                                                        <KeyboardArrowRightRoundedIcon sx={{ transition: 'all 0.5s ease' }} />
+                                                    ) : (
+                                                        <KeyboardArrowDownRoundedIcon sx={{ transition: 'all 0.5s ease' }} />
+                                                    )}
+                                                </Grid>
+
+                                                <Menu
+                                                    id="simple-menu"
+                                                    anchorEl={anchorEl}
+                                                    open={Boolean(anchorEl)}
+                                                    onClose={handleClose}
+                                                    MenuListProps={{ onMouseLeave: handleClose }}
+                                                    PaperProps={{
+                                                        style: {
+                                                            width: 150
+                                                        }
+                                                    }}
+                                                >
+                                                    {_.map(_.get(category, 'data', []), (option, index) => (
+                                                        <>
+                                                            <MenuItem key={index} onClick={handleClose}>
+                                                                {option.name}
+                                                            </MenuItem>
+                                                        </>
+                                                    ))}
+                                                </Menu>
+                                            </div>
+                                        ) : (
+                                            <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
+                                                <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
+                                                    {_.get(item, 'label', '')}
+                                                </Typography>
+                                            </Grid>
+                                        );
+                                    })}
                                 </Grid>
                             </Box>
                             {/* <Pets sx={{ display: { xs: 'block', sm: 'none' } }} /> */}
@@ -227,6 +303,30 @@ const Header = () => {
                     <MenuItem>Profile</MenuItem>
                     <MenuItem>My account</MenuItem>
                     <MenuItem>Logout</MenuItem>
+                </Menu> */}
+
+                {/* <Menu
+                    id="mouse-over-popover"
+                    open={open}
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left'
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left'
+                    }}
+                    disableRestoreFocus
+                    onClose={handlePopoverClose}
+                >
+                    <Stack spacing={0.75}>
+                        {_.map(_.get(category, 'data', []), (option, index) => (
+                            <>
+                                <MenuItem key={index}>{option.name}</MenuItem>
+                            </>
+                        ))}
+                    </Stack>
                 </Menu> */}
             </AppBar>
         </>
