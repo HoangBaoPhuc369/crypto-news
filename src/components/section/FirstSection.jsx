@@ -5,12 +5,12 @@ import HotNewsPost from '../sidePost/HotNewsPost';
 import { Container } from '@mui/material';
 import PromotionBanner from '../banner/promotion';
 
-const FirstSection = () => {
+const FirstSection = ({ listCateData }) => {
     return (
         <>
             <Container maxWidth="lg" sx={{ minHeight: '100vh' }}>
                 <MainBanner />
-                <CategoryNavbar />
+                <CategoryNavbar listCateData={listCateData} />
                 <PromotionBanner />
                 <HotNewsPost />
             </Container>

@@ -6,10 +6,10 @@ import HotNewsPost from '../sidePost/HotNewsPost';
 import { Container } from '@mui/material';
 import SidePost from '../sidePost/SidePost';
 
-const Body = () => {
+const Body = ({ listCateData }) => {
     return (
         <>
-            <FirstSection />
+            <FirstSection listCateData={listCateData} />
             <PostPress title="press release" />
             <SecondSection />
             <PostPress title="partner content" />

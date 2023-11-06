@@ -21,14 +21,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './style.css';
 
-const CategoryNavbar = () => {
+const CategoryNavbar = ({ listCateData }) => {
+    console.log(listCateData);
     // const sliderRef = useRef(null);
 
     // const handlePrev = useCallback(() => {
     //     if (!sliderRef.current) return;
     //     sliderRef.current.swiper.slidePrev();
     //   }, []);
-    
+
     //   const handleNext = useCallback(() => {
     //     if (!sliderRef.current) return;
     //     sliderRef.current.swiper.slideNext();
@@ -55,10 +56,10 @@ const CategoryNavbar = () => {
                     modules={[Navigation]}
                     className="CategorySwiper"
                 >
-                    {_.map(imageData, (image, index) => {
+                    {_.map(listCateData, (item, index) => {
                         return (
                             <>
-                                <SwiperSlide key={index}>
+                                <SwiperSlide key={_.get(item, '_id', index)}>
                                     <Box
                                         sx={{
                                             position: 'relative',
@@ -69,7 +70,7 @@ const CategoryNavbar = () => {
                                         }}
                                     >
                                         <img
-                                            src={_.get(image, 'img')}
+                                            src={_.get(item, 'imageUrl')}
                                             style={{
                                                 width: '170px',
                                                 height: '48px',
@@ -95,7 +96,7 @@ const CategoryNavbar = () => {
                                                 textShadow: '2px 7px 5px rgba(0,0,0,0.3), 0px -4px 10px rgba(255,255,255,0.3)'
                                             }}
                                         >
-                                            #{_.get(image, 'title')}
+                                            #{_.get(item, 'name')}
                                         </Typography>
                                     </Box>
                                 </SwiperSlide>
@@ -103,7 +104,7 @@ const CategoryNavbar = () => {
                         );
                     })}
                 </Swiper>
-                
+
                 {/* <Box className="prev-arrow" sx={{position: 'absolute', top: '0', left: 0, zIndex: '10', width: '60px', height: '48px', background: 'rgba(0, 0, 0, 0.2)', filter: 'blur(5px)'}}></Box>
                 <ArrowBackIosNewIcon onClick={handlePrev}  sx={{position: 'absolute', top: '25%', left: 10, zIndex: '9999', cursor: 'pointer', color: '#ffff'}} />
                 

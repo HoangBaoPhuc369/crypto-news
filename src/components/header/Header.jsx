@@ -35,6 +35,7 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
 import SearchIcon from '@mui/icons-material/Search';
 import { category } from '../../data/categoryData';
 import { useTheme } from '@mui/material/styles';
+import LanguagePopover from '../popover/LanguagePopover';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -65,27 +66,7 @@ const UserBox = styled(Box)(({ theme }) => ({
     }
 }));
 
-const tabs = [
-    {
-        label: 'News',
-        to: '',
-        hasSubtab: true
-    },
-    {
-        label: 'Our services',
-        to: ''
-    },
-    {
-        label: 'Project Partners',
-        to: ''
-    },
-    {
-        label: 'Contract',
-        to: ''
-    }
-];
-
-const Header = () => {
+const Header = ({ navData }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -112,6 +93,7 @@ const Header = () => {
                         style={{ width: '100%', height: '300px', objectFit: 'cover' }}
                     />
                 </Grid>
+
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
@@ -191,8 +173,9 @@ const Header = () => {
                                     >
                                         <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px' }} alt="" />
                                     </Grid>
-                                    {_.map(tabs, (item, index) => {
-                                        return Boolean(_.get(item, 'hasSubtab')) ? (
+                                    {_.map(navData, (item, index) => {
+                                        {
+                                            /* return Boolean(_.get(item, 'hasSubtab')) ? (
                                             <div>
                                                 <Grid
                                                     item
@@ -246,88 +229,54 @@ const Header = () => {
                                                     {_.get(item, 'label', '')}
                                                 </Typography>
                                             </Grid>
+                                        ); */
+                                        }
+
+                                        return (
+                                            <Grid key={_.get(item, '_id', index)} item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
+                                                <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
+                                                    {_.get(item, 'name', '')}
+                                                </Typography>
+                                            </Grid>
                                         );
                                     })}
                                 </Grid>
                             </Box>
                             {/* <Pets sx={{ display: { xs: 'block', sm: 'none' } }} /> */}
 
-                            <Icons>
-                                <TextField
-                                    variant="standard"
-                                    placeholder="Search Anything..."
-                                    sx={{
-                                        background: '#f5f5f5',
-                                        borderRadius: '4px',
-                                        width: '227px',
-                                        '& .MuiInput-underline:before, & .MuiInput-underline:after': {
-                                            display: 'none'
-                                        },
-                                        padding: '8px 16px',
-                                        '& .MuiInputBase-input': {
-                                            padding: '0',
-                                            fontSize: '14px'
-                                        }
-                                    }}
-                                    size="small"
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <SearchIcon />
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                ></TextField>
-                                {/* <Avatar
-                                    sx={{ width: 30, height: 30 }}
-                                    src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                                /> */}
-                            </Icons>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+                                <Icons>
+                                    <TextField
+                                        variant="standard"
+                                        placeholder="Search Anything..."
+                                        sx={{
+                                            background: '#f5f5f5',
+                                            borderRadius: '4px',
+                                            width: '227px',
+                                            '& .MuiInput-underline:before, & .MuiInput-underline:after': {
+                                                display: 'none'
+                                            },
+                                            padding: '8px 16px',
+                                            '& .MuiInputBase-input': {
+                                                padding: '0',
+                                                fontSize: '14px'
+                                            }
+                                        }}
+                                        size="small"
+                                        InputProps={{
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <SearchIcon />
+                                                </InputAdornment>
+                                            )
+                                        }}
+                                    ></TextField>
+                                </Icons>
+                                <LanguagePopover />
+                            </Box>
                         </Toolbar>
                     </Container>
                 </Box>
-                {/* <Menu
-                    id="demo-positioned-menu"
-                    aria-labelledby="demo-positioned-button"
-                    open={open}
-                    onClose={(e) => setOpen(false)}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right'
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right'
-                    }}
-                >
-                    <MenuItem>Profile</MenuItem>
-                    <MenuItem>My account</MenuItem>
-                    <MenuItem>Logout</MenuItem>
-                </Menu> */}
-
-                {/* <Menu
-                    id="mouse-over-popover"
-                    open={open}
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left'
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left'
-                    }}
-                    disableRestoreFocus
-                    onClose={handlePopoverClose}
-                >
-                    <Stack spacing={0.75}>
-                        {_.map(_.get(category, 'data', []), (option, index) => (
-                            <>
-                                <MenuItem key={index}>{option.name}</MenuItem>
-                            </>
-                        ))}
-                    </Stack>
-                </Menu> */}
             </AppBar>
         </>
     );

@@ -5,6 +5,9 @@ import Footer from '../../components/footer/Footer';
 import { Box, Grid } from '@mui/material';
 import { useQuery } from 'react-query';
 import CryptoApiService from '../../services/api-services/crypto.service';
+import { useSelector } from 'react-redux';
+import CategoryApiService from '../../services/api-services/category.service';
+import _ from 'lodash';
 
 const Home = () => {
     // const fetchCrypto = useQuery(['cryptoCurrentcy'], () => CryptoApiService.getCrypto(), {
@@ -16,9 +19,22 @@ const Home = () => {
     //     }
     // });
 
+    const { language } = useSelector((state) => state.local);
+
+    const qgetListCategoryList = useQuery(
+        ['qgetListCategoryList', language],
+        () => CategoryApiService.getListCategoryList({ data: language }),
+        {
+            onSuccess: (data) => {
+                console.log(data);
+            },
+            refetchOnWindowFocus: false
+        }
+    );
+
     return (
         <>
-            <Body />
+            <Body listCateData={_.get(qgetListCategoryList, 'data.data.data', [])} />
         </>
     );
 };
