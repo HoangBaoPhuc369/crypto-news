@@ -1,18 +1,15 @@
 import { Box, Chip, Container, Grid, Typography } from '@mui/material';
+import _ from 'lodash';
 import React from 'react';
-import image1 from '../../assets/images/test/1.jpg';
-import image2 from '../../assets/images/test/2.jpg';
-import image3 from '../../assets/images/test/3.jpg';
-import image4 from '../../assets/images/test/4.jpg';
 
-const MainBanner = () => {
+const MainBanner = ({ postSpotlight }) => {
     return (
         <Grid item container spacing={2} mt={1.5}>
             <Grid item xs={12} lg={6}>
                 <Box sx={{ height: '546px', width: '100%', position: 'relative' }}>
                     <img
                         // src={image1}
-                        src="https://crypto.news/app/uploads/2023/09/crypto-news-Police-seizing-bitcoin-mining-machines-in-Venezuela02.webp"
+                        src={_.get(postSpotlight[0], 'imageUrl')}
                         style={{ borderRadius: '15px', width: 'inherit', height: '100%', objectFit: 'cover' }}
                         alt=""
                         loading="lazy"
@@ -26,27 +23,27 @@ const MainBanner = () => {
                             bottom: 0,
                             borderRadius: ' 0  0 15px 15px',
                             display: 'flex',
-                            // alignItems: 'center',
                             justifyContent: 'flex-end',
                             padding: '20px 0px',
                             flexDirection: 'column',
                             gap: '10px'
                         }}
                     >
-                        <Typography sx={{ fontSize: '28px', color: '#fff', fontWeight: '600', lineHeight: '1.3', padding: '0 25px' }}>
-                            Cryptocurrency awareness vs knowledge: To educate to empower | Opinion
-                        </Typography>
-                        <Chip
-                            label="News"
+                        <Typography
                             sx={{
-                                width: '60px',
-                                borderRadius: '4px',
-                                background: '#dd0802',
+                                fontSize: '28px',
                                 color: '#fff',
-                                height: '25px',
-                                margin: '0 25px'
+                                fontWeight: '600',
+                                lineHeight: '1.3',
+                                padding: '0 25px',
+                                display: '-webkit-box',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 2,
+                                overflow: 'hidden'
                             }}
-                        />
+                        >
+                            {_.get(postSpotlight[0], 'title')}
+                        </Typography>
                     </Box>
                 </Box>
             </Grid>
@@ -62,7 +59,7 @@ const MainBanner = () => {
                             }}
                         >
                             <img
-                                src="https://crypto.news/app/uploads/2023/09/crypto-news-GMO-Media-to-Launch-a-Verse-on-Oasys01.webp"
+                                src={_.get(postSpotlight[1], 'imageUrl')}
                                 style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                                 loading="lazy"
                                 alt=""
@@ -83,20 +80,21 @@ const MainBanner = () => {
                                     gap: '10px'
                                 }}
                             >
-                                <Typography sx={{ fontSize: '20px', color: '#fff', fontWeight: '600', lineHeight: '1.3', px: '25px' }}>
-                                    AI won’t realize its potential without web3 | Opinion{' '}
-                                </Typography>
-                                <Chip
-                                    label="NFT"
+                                <Typography
                                     sx={{
-                                        width: '60px',
-                                        borderRadius: '4px',
-                                        background: '#dd0802',
+                                        fontSize: '20px',
                                         color: '#fff',
-                                        height: '25px',
-                                        margin: '0 25px'
+                                        fontWeight: '600',
+                                        lineHeight: '1.3',
+                                        px: '25px',
+                                        display: '-webkit-box',
+                                        WebkitBoxOrient: 'vertical',
+                                        WebkitLineClamp: 2,
+                                        overflow: 'hidden'
                                     }}
-                                />
+                                >
+                                    {_.get(postSpotlight[1], 'title')}
+                                </Typography>
                             </Box>
                         </Box>
                     </Grid>
@@ -111,7 +109,7 @@ const MainBanner = () => {
                             }}
                         >
                             <img
-                                src="https://crypto.news/app/uploads/2023/09/crypto-news-two-people-shaking-hands-office-background-day-light-low-poly-styl-v5.2.png"
+                                src={_.get(postSpotlight[2], 'imageUrl')}
                                 style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                                 loading="lazy"
                                 alt=""
@@ -125,27 +123,27 @@ const MainBanner = () => {
                                     bottom: 0,
                                     borderRadius: ' 0  0 15px 15px',
                                     display: 'flex',
-                                    // alignItems: 'center',
                                     justifyContent: 'flex-end',
                                     padding: '20px 0px',
                                     flexDirection: 'column',
                                     gap: '10px'
                                 }}
                             >
-                                <Typography sx={{ fontSize: '20px', color: '#fff', fontWeight: '600', lineHeight: '1.3', px: '25px' }}>
-                                    PepeCoin and ApeCoin fall while THORChain and InQubeta rise
-                                </Typography>
-                                <Chip
-                                    label="Partner"
+                                <Typography
                                     sx={{
-                                        width: '80px',
-                                        borderRadius: '4px',
-                                        background: '#dd0802',
+                                        fontSize: '20px',
                                         color: '#fff',
-                                        height: '25px',
-                                        margin: '0 25px'
+                                        fontWeight: '600',
+                                        lineHeight: '1.3',
+                                        px: '25px',
+                                        display: '-webkit-box',
+                                        WebkitBoxOrient: 'vertical',
+                                        WebkitLineClamp: 2,
+                                        overflow: 'hidden'
                                     }}
-                                />
+                                >
+                                    {_.get(postSpotlight[2], 'title')}
+                                </Typography>
                             </Box>
                         </Box>
                     </Grid>
@@ -160,7 +158,7 @@ const MainBanner = () => {
                             }}
                         >
                             <img
-                                src="https://crypto.news/app/uploads/2023/06/crypto-news-Vitalik-Buterin-front-side-portrait-Ethereum-background-day-light-low-poly-st-v5.1.jpg"
+                                src={_.get(postSpotlight[3], 'imageUrl')}
                                 style={{ borderRadius: '15px', width: '100%', height: '100%', objectFit: 'cover' }}
                                 loading="lazy"
                                 alt=""
@@ -174,27 +172,27 @@ const MainBanner = () => {
                                     bottom: 0,
                                     borderRadius: ' 0  0 15px 15px',
                                     display: 'flex',
-                                    // alignItems: 'center',
                                     justifyContent: 'flex-end',
                                     padding: '20px 0px',
                                     flexDirection: 'column',
                                     gap: '10px'
                                 }}
                             >
-                                <Typography sx={{ fontSize: '20px', color: '#fff', fontWeight: '600', lineHeight: '1.3', px: '25px' }}>
-                                    Year after FTX collapse: what to expect from SBF trial
-                                </Typography>
-                                <Chip
-                                    label="Opinion"
+                                <Typography
                                     sx={{
-                                        width: '70px',
-                                        borderRadius: '4px',
-                                        background: '#dd0802',
+                                        fontSize: '20px',
                                         color: '#fff',
-                                        height: '25px',
-                                        margin: '0 25px'
+                                        fontWeight: '600',
+                                        lineHeight: '1.3',
+                                        px: '25px',
+                                        display: '-webkit-box',
+                                        WebkitBoxOrient: 'vertical',
+                                        WebkitLineClamp: 2,
+                                        overflow: 'hidden'
                                     }}
-                                />
+                                >
+                                    {_.get(postSpotlight[3], 'title')}
+                                </Typography>
                             </Box>
                         </Box>
                     </Grid>
