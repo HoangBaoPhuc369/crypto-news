@@ -14,5 +14,44 @@ class PostApiService {
             }
         });
     }
+
+    getListPost(local) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: local,
+                unpublished: 1,
+                isSpotlight: 0
+            }
+        });
+    }
+
+    getListPostHotNews(local) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: local,
+                page: 1,
+                page_size: 10,
+                sort: '-views'
+            }
+        });
+    }
+
+    getListPostRandom(local) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: local,
+                isRandom: 1,
+                randomSelect: 10
+            }
+        });
+    }
+
+    getDetailPost(data) {
+        return axiosServices.get(`${this.baseApi}posts/${_.get(data, 'id')}`, {
+            params: {
+                local: _.get(data, 'local')
+            }
+        });
+    }
 }
 export default new PostApiService();

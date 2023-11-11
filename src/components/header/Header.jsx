@@ -66,7 +66,7 @@ const UserBox = styled(Box)(({ theme }) => ({
     }
 }));
 
-const Header = ({ navData }) => {
+const Header = ({ bannerUrl, navData }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -87,11 +87,7 @@ const Header = ({ navData }) => {
             <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'unset' }}>
                 {/* Thanh ngang hiển thị giá crypto */}
                 <Grid xs={12}>
-                    <img
-                        src="https://crypto.news/app/uploads/2023/09/crypto-news-trading-down03.webp"
-                        alt=""
-                        style={{ width: '100%', height: '300px', objectFit: 'cover' }}
-                    />
+                    <img src={bannerUrl} alt="" style={{ width: '100%', height: '300px', objectFit: 'cover' }} loading="lazy" />
                 </Grid>
 
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>

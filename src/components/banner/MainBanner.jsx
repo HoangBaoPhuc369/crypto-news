@@ -1,12 +1,18 @@
 import { Box, Chip, Container, Grid, Typography } from '@mui/material';
 import _ from 'lodash';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MainBanner = ({ postSpotlight }) => {
+    const navi = useNavigate();
+
     return (
         <Grid item container spacing={2} mt={1.5}>
             <Grid item xs={12} lg={6}>
-                <Box sx={{ height: '546px', width: '100%', position: 'relative' }}>
+                <Box
+                    sx={{ height: '546px', width: '100%', position: 'relative', cursor: 'pointer' }}
+                    onClick={() => navi(`/details/${_.get(postSpotlight[0], '_id')}`)}
+                >
                     <img
                         // src={image1}
                         src={_.get(postSpotlight[0], 'imageUrl')}
@@ -38,7 +44,7 @@ const MainBanner = ({ postSpotlight }) => {
                                 padding: '0 25px',
                                 display: '-webkit-box',
                                 WebkitBoxOrient: 'vertical',
-                                WebkitLineClamp: 2,
+                                WebkitLineClamp: 3,
                                 overflow: 'hidden'
                             }}
                         >
@@ -55,8 +61,10 @@ const MainBanner = ({ postSpotlight }) => {
                                 height: '258px',
                                 borderRadius: '15px',
                                 boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
-                                position: 'relative'
+                                position: 'relative',
+                                cursor: 'pointer'
                             }}
+                            onClick={() => navi(`/details/${_.get(postSpotlight[1], '_id')}`)}
                         >
                             <img
                                 src={_.get(postSpotlight[1], 'imageUrl')}
@@ -89,7 +97,7 @@ const MainBanner = ({ postSpotlight }) => {
                                         px: '25px',
                                         display: '-webkit-box',
                                         WebkitBoxOrient: 'vertical',
-                                        WebkitLineClamp: 2,
+                                        WebkitLineClamp: 3,
                                         overflow: 'hidden'
                                     }}
                                 >
@@ -105,8 +113,10 @@ const MainBanner = ({ postSpotlight }) => {
                                 width: '100%',
                                 borderRadius: '15px',
                                 boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
-                                position: 'relative'
+                                position: 'relative',
+                                cursor: 'pointer'
                             }}
+                            onClick={() => navi(`/details/${_.get(postSpotlight[2], '_id')}`)}
                         >
                             <img
                                 src={_.get(postSpotlight[2], 'imageUrl')}
@@ -138,7 +148,7 @@ const MainBanner = ({ postSpotlight }) => {
                                         px: '25px',
                                         display: '-webkit-box',
                                         WebkitBoxOrient: 'vertical',
-                                        WebkitLineClamp: 2,
+                                        WebkitLineClamp: 3,
                                         overflow: 'hidden'
                                     }}
                                 >
@@ -154,8 +164,10 @@ const MainBanner = ({ postSpotlight }) => {
                                 width: '100%',
                                 borderRadius: '15px',
                                 boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
-                                position: 'relative'
+                                position: 'relative',
+                                cursor: 'pointer'
                             }}
+                            onClick={() => navi(`/details/${_.get(postSpotlight[3], '_id')}`)}
                         >
                             <img
                                 src={_.get(postSpotlight[3], 'imageUrl')}
@@ -187,7 +199,7 @@ const MainBanner = ({ postSpotlight }) => {
                                         px: '25px',
                                         display: '-webkit-box',
                                         WebkitBoxOrient: 'vertical',
-                                        WebkitLineClamp: 2,
+                                        WebkitLineClamp: 3,
                                         overflow: 'hidden'
                                     }}
                                 >

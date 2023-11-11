@@ -22,7 +22,6 @@ import 'swiper/css/pagination';
 import './style.css';
 
 const CategoryNavbar = ({ listCateData }) => {
-    console.log(listCateData);
     // const sliderRef = useRef(null);
 
     // const handlePrev = useCallback(() => {

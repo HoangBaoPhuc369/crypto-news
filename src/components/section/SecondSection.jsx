@@ -5,8 +5,9 @@ import _ from 'lodash';
 import { fakeDataPost3 } from '../../data/fakeDataPost';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
+import moment from 'moment';
 
-const SecondSection = () => {
+const SecondSection = ({ listPost }) => {
     return (
         <Container maxWidth={'lg'}>
             <Grid container sx={{ marginBottom: '40px' }}>
@@ -31,9 +32,9 @@ const SecondSection = () => {
                 </Grid>
 
                 <Grid container xs={12} spacing={2}>
-                    {_.map(fakeDataPost3, (item, index) => {
+                    {_.map(listPost, (item, index) => {
                         return (
-                            <Grid item xs={6}>
+                            <Grid item xs={6} key={_.get(item, '_id', index)}>
                                 <Box
                                     sx={{
                                         padding: '10px',
@@ -44,7 +45,7 @@ const SecondSection = () => {
                                     }}
                                 >
                                     <img
-                                        src={_.get(item, 'img')}
+                                        src={_.get(item, 'imageUrl')}
                                         alt=""
                                         style={{
                                             width: '340px',
@@ -52,13 +53,41 @@ const SecondSection = () => {
                                             objectFit: 'cover',
                                             borderRadius: '12px'
                                         }}
+                                        loading="lazy"
                                     />
-                                    <Box>
-                                        <Typography sx={{ color: '#3E3232', fontSize: '16px', fontWeight: '600' }}>
-                                            Justin Sun launches ‘SAFU’ fund after HTX $8m hack
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'flex-start',
+                                            justifyContent: 'center',
+                                            gap: '12px'
+                                        }}
+                                    >
+                                        <Typography
+                                            sx={{
+                                                color: '#3E3232',
+                                                fontSize: '16px',
+                                                fontWeight: '600',
+                                                display: '-webkit-box',
+                                                WebkitBoxOrient: 'vertical',
+                                                WebkitLineClamp: 2,
+                                                overflow: 'hidden'
+                                            }}
+                                        >
+                                            {_.get(item, 'title', '')}
                                         </Typography>
-                                        <Typography sx={{ color: 'rgba(62, 50, 50, 0.75)', fontSize: '14px', marginBottom: '10px' }}>
-                                            Gemini, a cryptocurrency exchange co-founded
+                                        <Typography
+                                            sx={{
+                                                color: 'rgba(62, 50, 50, 0.75)',
+                                                fontSize: '14px',
+                                                display: '-webkit-box',
+                                                WebkitBoxOrient: 'vertical',
+                                                WebkitLineClamp: 2,
+                                                overflow: 'hidden'
+                                            }}
+                                        >
+                                            {_.get(item, 'subTitle', '')}
                                         </Typography>
                                         <Box
                                             sx={{
@@ -71,7 +100,7 @@ const SecondSection = () => {
                                                 sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}
                                             >
                                                 <img
-                                                    src="https://crypto.news/app/uploads/2023/07/Pomerdoge-POMD-to-bring-40x-more-gains-than-Pepe-PEPE-and-Shiba-Inu-SHIB05.jpg.webp"
+                                                    src={_.get(item, 'author.avatar')}
                                                     alt=""
                                                     style={{
                                                         width: '44px',
@@ -79,6 +108,7 @@ const SecondSection = () => {
                                                         borderRadius: '12px',
                                                         objectFit: 'cover'
                                                     }}
+                                                    loading="lazy"
                                                 />
                                                 <Box sx={{ flex: '1' }}>
                                                     <Typography
@@ -90,7 +120,7 @@ const SecondSection = () => {
                                                             letterSpacing: '0.1px'
                                                         }}
                                                     >
-                                                        James
+                                                        {_.get(item, 'author.name')}
                                                     </Typography>
                                                     <Typography
                                                         sx={{
@@ -101,10 +131,9 @@ const SecondSection = () => {
                                                             letterSpacing: '0.25px'
                                                         }}
                                                     >
-                                                        August 18 , 2022
+                                                        {moment(_.get(item, 'createdAt', new Date())).format('MMMM DD, YYYY')}
                                                     </Typography>
                                                 </Box>
-                                                <VisibilityIcon sx={{ color: 'grey' }} />
                                             </Box>
                                         </Box>
                                     </Box>

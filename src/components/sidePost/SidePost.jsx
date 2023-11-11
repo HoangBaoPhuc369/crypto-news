@@ -13,8 +13,9 @@ import { Navigation } from 'swiper/modules';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
+import moment from 'moment';
 
-const SidePost = ({ title }) => {
+const SidePost = ({ title, listPost }) => {
     const sliderRef = useRef(null);
 
     const handlePrev = useCallback(() => {
@@ -66,20 +67,10 @@ const SidePost = ({ title }) => {
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', height: '450px' }}>
-                <Swiper
-                    ref={sliderRef}
-                    spaceBetween={10}
-                    slidesPerView={3}
-                    autoplay={true}
-                    // ref={sliderRef}
-                    // loop={true}
-                    // navigation={true}
-                    // modules={[Navigation]}
-                    className="PostSideSwiper"
-                >
-                    {_.map(fakeDataPost, (item, index) => {
+                <Swiper ref={sliderRef} spaceBetween={10} slidesPerView={3} autoplay={true} className="PostSideSwiper">
+                    {_.map(listPost, (item, index) => {
                         return (
-                            <SwiperSlide key={index}>
+                            <SwiperSlide key={_.get(item, '_id')}>
                                 <Box
                                     sx={{
                                         width: '320px',
@@ -90,22 +81,37 @@ const SidePost = ({ title }) => {
                                     }}
                                 >
                                     <img
-                                        src={_.get(item, 'img')}
+                                        src={_.get(item, 'imageUrl')}
                                         style={{ width: '100%', height: '190px', borderRadius: '12px', objectFit: 'cover' }}
                                         alt=""
                                     />
-                                    <Typography sx={{ color: '#3E3232', fontSize: '16px', fontWeight: '600', padding: '16px 0' }}>
-                                        Opening Day of Boating Season, Seattle WA
+                                    <Typography
+                                        sx={{
+                                            color: '#3E3232',
+                                            fontSize: '16px',
+                                            fontWeight: '600',
+                                            margin: '16px 0',
+                                            display: '-webkit-box',
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            overflow: 'hidden'
+                                        }}
+                                    >
+                                        {_.get(item, 'title')}
                                     </Typography>
                                     <Typography
                                         sx={{
                                             color: 'rgba(62, 50, 50, 0.75)',
                                             fontSize: '14px',
                                             fontWeight: '500',
-                                            paddingBottom: '16px'
+                                            marginBottom: '16px',
+                                            display: '-webkit-box',
+                                            WebkitBoxOrient: 'vertical',
+                                            WebkitLineClamp: 2,
+                                            overflow: 'hidden'
                                         }}
                                     >
-                                        Of course the Puget Sound is very watery, and where there is water, there are boats. Today is
+                                        {_.get(item, 'subTitle')}
                                     </Typography>
                                     <Box
                                         sx={{
@@ -116,7 +122,7 @@ const SidePost = ({ title }) => {
                                     >
                                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
                                             <img
-                                                src={_.get(item, 'avatar')}
+                                                src={_.get(item, 'author.avatar')}
                                                 alt=""
                                                 style={{
                                                     width: '44px',
@@ -135,7 +141,7 @@ const SidePost = ({ title }) => {
                                                         letterSpacing: '0.1px'
                                                     }}
                                                 >
-                                                    James
+                                                    {_.get(item, 'author.name')}
                                                 </Typography>
                                                 <Typography
                                                     sx={{
@@ -146,7 +152,7 @@ const SidePost = ({ title }) => {
                                                         letterSpacing: '0.25px'
                                                     }}
                                                 >
-                                                    August 18 , 2022
+                                                    {moment(_.get(item, 'createdAt', new Date())).format('MMMM DD, YYYY')}
                                                 </Typography>
                                             </Box>
                                             <VisibilityIcon sx={{ color: 'grey' }} />

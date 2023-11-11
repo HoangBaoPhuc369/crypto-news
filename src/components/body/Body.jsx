@@ -6,15 +6,15 @@ import HotNewsPost from '../sidePost/HotNewsPost';
 import { Container } from '@mui/material';
 import SidePost from '../sidePost/SidePost';
 
-const Body = ({ listCateData }) => {
+const Body = ({ listPost, listCateData, listPostRandom, bannerUrl }) => {
     return (
         <>
-            <FirstSection listCateData={listCateData} />
+            <FirstSection listCateData={listCateData} bannerUrl={bannerUrl} />
             <PostPress title="press release" />
-            <SecondSection />
+            <SecondSection listPost={listPost} />
             <PostPress title="partner content" />
             <Container maxWidth={'lg'}>
-                <SidePost title="Some Things You Missed" />
+                <SidePost title="Some Things You Missed" listPost={listPostRandom} />
             </Container>
         </>
     );

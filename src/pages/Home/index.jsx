@@ -7,6 +7,8 @@ import { useQuery } from 'react-query';
 import CryptoApiService from '../../services/api-services/crypto.service';
 import { useSelector } from 'react-redux';
 import CategoryApiService from '../../services/api-services/category.service';
+import PostApiService from '../../services/api-services/post.service';
+import BannerApiService from '../../services/api-services/banner.service';
 import _ from 'lodash';
 
 const Home = () => {
@@ -26,15 +28,41 @@ const Home = () => {
         () => CategoryApiService.getListCategoryList({ data: language }),
         {
             onSuccess: (data) => {
-                console.log(data);
+                // console.log(data);
             },
             refetchOnWindowFocus: false
         }
     );
 
+    const qgetListPost = useQuery(['qgetListPost', language], () => PostApiService.getListPost(language), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetListPostRandom = useQuery(['qgetListPostRandom', language], () => PostApiService.getListPostRandom(language), {
+        onSuccess: (data) => {
+            console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetMediumBanner = useQuery(['qgetMediumBanner', language], () => BannerApiService.getBanner('MEDIUM_HEADER_BANNER'), {
+        onSuccess: (data) => {
+            console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
     return (
         <>
-            <Body listCateData={_.get(qgetListCategoryList, 'data.data.data', [])} />
+            <Body
+                bannerUrl={_.get(qgetMediumBanner, 'data.data.bannerUrl', '')}
+                listPostRandom={_.get(qgetListPostRandom, 'data.data.data', [])}
+                listPost={_.get(qgetListPost, 'data.data.data', [])}
+                listCateData={_.get(qgetListCategoryList, 'data.data.data', [])}
+            />
         </>
     );
 };
