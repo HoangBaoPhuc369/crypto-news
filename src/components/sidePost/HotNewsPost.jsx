@@ -14,9 +14,10 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
 import moment from 'moment/moment';
-
+import { useNavigate } from 'react-router-dom';
 
 const HotNewsPost = ({ hotNewsPost }) => {
+    const navi = useNavigate();
     const sliderRef = useRef(null);
 
     const handlePrev = useCallback(() => {
@@ -68,13 +69,7 @@ const HotNewsPost = ({ hotNewsPost }) => {
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', height: '450px' }}>
-                <Swiper
-                    ref={sliderRef}
-                    spaceBetween={10}
-                    slidesPerView={3}
-                    autoplay={true}
-                    className="PostSideSwiper"
-                >
+                <Swiper ref={sliderRef} spaceBetween={10} slidesPerView={3} autoplay={true} className="PostSideSwiper">
                     {_.map(hotNewsPost, (item, index) => {
                         return (
                             <SwiperSlide key={_.get(item, '_id', index)}>
@@ -84,8 +79,10 @@ const HotNewsPost = ({ hotNewsPost }) => {
                                         // minHeight: '390px',
                                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                                         borderRadius: '12px',
-                                        padding: '10px'
+                                        padding: '10px',
+                                        cursor: 'pointer'
                                     }}
+                                    onClick={() => navi(`/details/${_.get(item, '_id')}`)}
                                 >
                                     <img
                                         src={_.get(item, 'imageUrl')}

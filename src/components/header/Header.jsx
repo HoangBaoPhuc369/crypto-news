@@ -36,6 +36,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { category } from '../../data/categoryData';
 import { useTheme } from '@mui/material/styles';
 import LanguagePopover from '../popover/LanguagePopover';
+import { useNavigate } from 'react-router-dom';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -67,6 +68,7 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 
 const Header = ({ bannerUrl, navData }) => {
+    const navi = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -167,7 +169,9 @@ const Header = ({ bannerUrl, navData }) => {
                                             fontFamily: 'monospace'
                                         }}
                                     >
-                                        <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px' }} alt="" />
+                                        <Box onClick={() => navi('/')}>
+                                            <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px' }} alt="" />
+                                        </Box>
                                     </Grid>
                                     {_.map(navData, (item, index) => {
                                         {

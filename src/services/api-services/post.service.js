@@ -36,6 +36,17 @@ class PostApiService {
         });
     }
 
+    getListPostTopPost(local) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: local,
+                page: 1,
+                page_size: 5,
+                sort: '-views'
+            }
+        });
+    }
+
     getListPostRandom(local) {
         return axiosServices.get(`${this.baseApi}posts`, {
             params: {
@@ -50,6 +61,24 @@ class PostApiService {
         return axiosServices.get(`${this.baseApi}posts/${_.get(data, 'id')}`, {
             params: {
                 local: _.get(data, 'local')
+            }
+        });
+    }
+
+    createComment(data) {
+        console.log({
+            body: _.get(data, 'comment'),
+            commentBy: {
+                name: _.get(data, 'name'),
+                email: _.get(data, 'email')
+            }
+        });
+
+        return axiosServices.post(`${this.baseApi}posts/${_.get(data, 'id')}/comments`, {
+            body: _.get(data, 'comment'),
+            commentBy: {
+                name: _.get(data, 'name'),
+                email: _.get(data, 'email')
             }
         });
     }

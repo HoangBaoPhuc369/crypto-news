@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import PostApiService from '../../services/api-services/post.service';
+import BannerApiService from '../../services/api-services/banner.service';
 
 const Details = () => {
     const { id } = useParams();
@@ -23,14 +24,39 @@ const Details = () => {
 
     const qgetDetailPost = useQuery(['qgetDetailPost', language], () => PostApiService.getDetailPost({ id: id, local: language }), {
         onSuccess: (data) => {
-            console.log(data);
+            // console.log(data);
         },
         refetchOnWindowFocus: false
     });
 
     const qgetListPostRandom = useQuery(['qgetListPostRandom', language], () => PostApiService.getListPostRandom(language), {
         onSuccess: (data) => {
-            console.log(data);
+            // console.log(data);
+        }
+    });
+
+    const qgetListPostHotNews = useQuery(['qgetListPostHotNews', language], () => PostApiService.getListPostTopPost(language), {
+        onSuccess: (data) => {},
+        refetchOnWindowFocus: false
+    });
+
+    const qgetBanner1 = useQuery(['qgetBanner1', language], () => BannerApiService.getBanner('MEDIUM_DETAIL_BANNER_1'), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetBanner2 = useQuery(['qgetBanner2', language], () => BannerApiService.getBanner('MEDIUM_DETAIL_BANNER_2'), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetBanner3 = useQuery(['qgetBanner3', language], () => BannerApiService.getBanner('MEDIUM_DETAIL_BANNER_3'), {
+        onSuccess: (data) => {
+            // console.log(data);
         },
         refetchOnWindowFocus: false
     });
@@ -38,7 +64,14 @@ const Details = () => {
     return (
         <Container>
             <Grid container sx={{ minHeight: '100vh' }}>
-                <DetailContent post={_.get(qgetDetailPost, 'data.data', {})} />
+                <DetailContent
+                    post={_.get(qgetDetailPost, 'data.data', {})}
+                    postRefetch={qgetDetailPost.refetch}
+                    topPost={_.get(qgetListPostHotNews, 'data.data.data', [])}
+                    banner1={_.get(qgetBanner1, 'data.data.bannerUrl', '')}
+                    banner2={_.get(qgetBanner2, 'data.data.bannerUrl', '')}
+                    banner3={_.get(qgetBanner3, 'data.data.bannerUrl', '')}
+                />
 
                 <SidePost title="Relate Post" listPost={_.get(qgetListPostRandom, 'data.data.data', [])} />
             </Grid>

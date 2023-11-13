@@ -6,8 +6,11 @@ import { fakeDataPost3 } from '../../data/fakeDataPost';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 const SecondSection = ({ listPost }) => {
+    const navi = useNavigate();
+
     return (
         <Container maxWidth={'lg'}>
             <Grid container sx={{ marginBottom: '40px' }}>
@@ -41,8 +44,10 @@ const SecondSection = ({ listPost }) => {
                                         display: 'flex',
                                         gap: '10px',
                                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-                                        borderRadius: '12px'
+                                        borderRadius: '12px',
+                                        cursor: 'pointer'
                                     }}
+                                    onClick={() => navi(`/details/${_.get(item, '_id')}`)}
                                 >
                                     <img
                                         src={_.get(item, 'imageUrl')}

@@ -14,8 +14,11 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
 const SidePost = ({ title, listPost }) => {
+    const navi = useNavigate();
+
     const sliderRef = useRef(null);
 
     const handlePrev = useCallback(() => {
@@ -77,8 +80,10 @@ const SidePost = ({ title, listPost }) => {
                                         // minHeight: '390px',
                                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                                         borderRadius: '12px',
-                                        padding: '10px'
+                                        padding: '10px',
+                                        cursor: 'pointer'
                                     }}
+                                    onClick={() => navi(`/details/${_.get(item, '_id')}`)}
                                 >
                                     <img
                                         src={_.get(item, 'imageUrl')}

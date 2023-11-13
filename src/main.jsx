@@ -12,6 +12,7 @@ import HttpApi from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { persister, store } from './store/index.js';
 import { PersistGate } from 'redux-persist/integration/react';
+import NavigationScroll from './utils/NavigationScroll.jsx';
 
 const queryClient = new QueryClient();
 
@@ -40,7 +41,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <QueryClientProvider client={queryClient}>
                 <ThemeProvider>
                     <Router>
-                        <App />
+                        <NavigationScroll>
+                            <App />
+                        </NavigationScroll>
                     </Router>
                 </ThemeProvider>
             </QueryClientProvider>
