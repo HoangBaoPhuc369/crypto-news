@@ -9,26 +9,25 @@
 }
 
 .CategorySwiper .swiper-button-prev {
-    background-image: url('../../../assets/images/icons8-arrow-64.png');
-    width: 42px;
-    height: 42px;
+    background-image: url('../../../assets/icons/ic_arrow_left.svg');
+    width: 32px;
+    height: 32px;
     background-color: white;
-    top: 25px;
+    top: 30px;
     left: 10px;
     border-radius: 50%;
     background-position: 50% 50%;
 }
 
 .CategorySwiper .swiper-button-next {
-    background-image: url('../../../assets/images/icons8-arrow-64.png');
-    width: 42px;
-    height: 42px;
+    background-image: url('../../../assets/icons/ic_arrow_right.svg');
+    width: 32px;
+    height: 32px;
     background-color: white;
-    top: 25px;
+    top: 30px;
     right: 10px;
     border-radius: 50%;
     background-position: 50% 50%;
-    transform: rotate(180deg);
 }
 
 .CategorySwiper .swiper-button-disabled {

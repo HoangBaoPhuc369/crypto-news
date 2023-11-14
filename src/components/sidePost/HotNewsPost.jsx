@@ -69,7 +69,7 @@ const HotNewsPost = ({ hotNewsPost }) => {
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', height: '450px' }}>
-                <Swiper ref={sliderRef} spaceBetween={10} slidesPerView={3} autoplay={true} className="PostSideSwiper">
+                <Swiper ref={sliderRef} spaceBetween={12} slidesPerView={3.3} autoplay={true} className="PostSideSwiper">
                     {_.map(hotNewsPost, (item, index) => {
                         return (
                             <SwiperSlide key={_.get(item, '_id', index)}>

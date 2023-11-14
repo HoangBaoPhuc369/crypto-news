@@ -37,6 +37,7 @@ import { category } from '../../data/categoryData';
 import { useTheme } from '@mui/material/styles';
 import LanguagePopover from '../popover/LanguagePopover';
 import { useNavigate } from 'react-router-dom';
+import Iconify from '../iconify/Iconify';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -266,7 +267,7 @@ const Header = ({ bannerUrl, navData }) => {
                                         InputProps={{
                                             endAdornment: (
                                                 <InputAdornment position="end">
-                                                    <SearchIcon />
+                                                    <Iconify icon={'iconamoon:search-thin'} sx={{ cursor: 'pointer' }} />
                                                 </InputAdornment>
                                             )
                                         }}

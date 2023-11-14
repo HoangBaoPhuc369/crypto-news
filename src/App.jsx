@@ -12,6 +12,7 @@ import CategoryApiService from './services/api-services/category.service';
 import BannerApiService from './services/api-services/banner.service';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
+import AllPost from './pages/AllPost';
 
 function App() {
     const { language } = useSelector((state) => state.local);
@@ -46,6 +47,7 @@ function App() {
                     <Route exact path="/details/:id" element={<Details />} />
                     <Route exact path="/tags/:tag" element={<TagPage />} />
                     <Route exact path="/search/:text" element={<SearchPage />} />
+                    <Route exact path="/all-post" element={<AllPost />} />
                 </Routes>
                 <Footer />
             </Box>

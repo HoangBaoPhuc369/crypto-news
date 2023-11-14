@@ -10,9 +10,9 @@ const Body = ({ listPost, listCateData, listPostRandom, bannerUrl }) => {
     return (
         <>
             <FirstSection listCateData={listCateData} bannerUrl={bannerUrl} />
-            <PostPress title="press release" />
+            <PostPress title="Press Release" />
             <SecondSection listPost={listPost} />
-            <PostPress title="partner content" />
+            <PostPress title="Partner Content" />
             <Container maxWidth={'lg'}>
                 <SidePost title="Some Things You Missed" listPost={listPostRandom} />
             </Container>
