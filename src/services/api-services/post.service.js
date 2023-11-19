@@ -19,6 +19,8 @@ class PostApiService {
         return axiosServices.get(`${this.baseApi}posts`, {
             params: {
                 local: local,
+                page: 1,
+                page_size: 6,
                 unpublished: 1,
                 isSpotlight: 0
             }
@@ -79,6 +81,17 @@ class PostApiService {
             commentBy: {
                 name: _.get(data, 'name'),
                 email: _.get(data, 'email')
+            }
+        });
+    }
+
+    getSearchResult(data) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: _.get(data, 'local'),
+                page: _.get(data, 'page'),
+                page_size: 8,
+                key_word: _.get(data, 'text')
             }
         });
     }

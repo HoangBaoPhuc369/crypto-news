@@ -1,0 +1,25 @@
+:root {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.paginationSection {
+    .MuiButtonBase-root {
+        margin: 0 8px;
+        background-color: #ffff;
+        border: 1px solid #d3d8de;
+
+        &.Mui-disabled {
+            background: #eaeef2;
+        }
+
+        &.Mui-selected {
+            border: 1px solid #de0b02;
+            background-color: #de0b02;
+            color: #ffff;
+        }
+    }
+}

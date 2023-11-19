@@ -6,136 +6,200 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
 import TitleBody from '../title/TitleBody';
 import Pagination from '@mui/material/Pagination';
+import { useQuery } from 'react-query';
+import PostApiService from '../../services/api-services/post.service';
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const SearchPage = () => {
     const { text } = useParams();
 
+    const hookForm = useForm({
+        defaultValues: {
+            page: 1
+        }
+    });
+
+    const { watch, setValue } = hookForm;
+
+    const { language } = useSelector((state) => state.local);
+
+    const qgetSearchResult = useQuery(
+        ['qgetSearchResult', text, watch('page')],
+        () => PostApiService.getSearchResult({ page: watch('page'), text: text, local: language }),
+        {
+            onSuccess: (data) => {
+                // console.log(data);
+            },
+            refetchOnWindowFocus: false,
+            enabled: Boolean(text)
+        }
+    );
+
+    const results = _.get(qgetSearchResult, 'data.data.data', []);
+    const totalResults = _.get(qgetSearchResult, 'data.data.total', 1);
+    const totalPages = Math.ceil(totalResults / 8);
+
+    const handlePageChange = (event, value) => {
+        setValue('page', value);
+    };
     return (
         <Container>
-            <Grid container>
-                <Grid item xs={12} sx={{ margin: '45px 0 20px 0' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-                        <TitleBody title={`results for ${text}`} />
-                    </Box>
-                </Grid>
-            </Grid>
-            <Grid container xs={12} spacing={3}>
-                {_.map([1, 2, 3, 4, 5, 6], (item, index) => {
-                    return (
-                        <Grid item xs={7}>
-                            <Box
-                                sx={{
-                                    padding: '10px',
-                                    display: 'flex',
-                                    gap: '10px',
-                                    boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-                                    borderRadius: '12px',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                <img
-                                    src="https://crypto.news/app/uploads/2023/09/crypto-news-indian-flag-low-poly-style.jpg.webp"
-                                    alt=""
-                                    style={{
-                                        width: '340px',
-                                        height: '190px',
-                                        objectFit: 'cover',
-                                        borderRadius: '12px'
-                                    }}
-                                    loading="lazy"
-                                />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            {Boolean(_.get(qgetSearchResult, 'isLoading')) ? (
+                <Typography>Loading ...</Typography>
+            ) : results.length > 0 ? (
+                <>
+                    <Grid container>
+                        <Grid item xs={12} sx={{ margin: '45px 0 20px 0' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                                <TitleBody title={`results for "${text}"`} />
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <Grid container xs={12} spacing={3}>
+                        {_.map(results, (item, index) => {
+                            return (
+                                <Grid item xs={7} key={_.get(item, '_id')}>
                                     <Box
                                         sx={{
+                                            padding: '10px',
                                             display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'flex-start',
-                                            justifyContent: 'center',
-                                            gap: '12px'
-                                        }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                color: '#3E3232',
-                                                fontSize: '16px',
-                                                fontWeight: '600',
-                                                display: '-webkit-box',
-                                                WebkitBoxOrient: 'vertical',
-                                                WebkitLineClamp: 2,
-                                                overflow: 'hidden'
-                                            }}
-                                        >
-                                            Justin Sun launches ‘SAFU’ fund after HTX $8m hack
-                                        </Typography>
-                                        <Typography
-                                            sx={{
-                                                color: 'rgba(62, 50, 50, 0.75)',
-                                                fontSize: '14px',
-                                                display: '-webkit-box',
-                                                WebkitBoxOrient: 'vertical',
-                                                WebkitLineClamp: 2,
-                                                overflow: 'hidden'
-                                            }}
-                                        >
-                                            Gemini, a cryptocurrency exchange co-founded
-                                        </Typography>
-                                    </Box>
-                                    <Box
-                                        sx={{
-                                            padding: '5px 16px',
+                                            gap: '10px',
+                                            boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                                             borderRadius: '12px',
-                                            background: '#F5F5F5',
-                                            width: '100%',
-                                            marginBottom: '20px'
+                                            cursor: 'pointer'
                                         }}
                                     >
-                                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
-                                            <img
-                                                src="https://crypto.news/app/uploads/2023/07/Pomerdoge-POMD-to-bring-40x-more-gains-than-Pepe-PEPE-and-Shiba-Inu-SHIB05.jpg.webp"
-                                                alt=""
-                                                style={{
-                                                    width: '44px',
-                                                    height: '44px',
-                                                    borderRadius: '12px',
-                                                    objectFit: 'cover'
+                                        <img
+                                            src={_.get(item, 'imageUrl')}
+                                            alt=""
+                                            style={{
+                                                width: '340px',
+                                                height: '190px',
+                                                objectFit: 'cover',
+                                                borderRadius: '12px'
+                                            }}
+                                            loading="lazy"
+                                        />
+                                        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                            <Box
+                                                sx={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'flex-start',
+                                                    justifyContent: 'center',
+                                                    gap: '12px'
                                                 }}
-                                                loading="lazy"
-                                            />
-                                            <Box sx={{ flex: '1' }}>
+                                            >
                                                 <Typography
                                                     sx={{
-                                                        lineHeight: '22px',
-                                                        fontSize: '14px',
-                                                        color: '3E3232',
+                                                        color: '#3E3232',
+                                                        fontSize: '16px',
                                                         fontWeight: '600',
-                                                        letterSpacing: '0.1px'
+                                                        display: '-webkit-box',
+                                                        WebkitBoxOrient: 'vertical',
+                                                        WebkitLineClamp: 2,
+                                                        overflow: 'hidden'
                                                     }}
                                                 >
-                                                    James
+                                                    {_.get(item, 'title')}
                                                 </Typography>
                                                 <Typography
                                                     sx={{
-                                                        lineHeight: '18px',
-                                                        fontSize: '12px',
-                                                        color: '3E3232',
-                                                        fontWeight: '500',
-                                                        letterSpacing: '0.25px'
+                                                        color: 'rgba(62, 50, 50, 0.75)',
+                                                        fontSize: '14px',
+                                                        display: '-webkit-box',
+                                                        WebkitBoxOrient: 'vertical',
+                                                        WebkitLineClamp: 2,
+                                                        overflow: 'hidden'
                                                     }}
                                                 >
-                                                    August 18 , 2022
+                                                    {_.get(item, 'subTitle')}
                                                 </Typography>
+                                            </Box>
+                                            <Box
+                                                sx={{
+                                                    padding: '5px 16px',
+                                                    borderRadius: '12px',
+                                                    background: '#F5F5F5',
+                                                    width: '100%',
+                                                    marginBottom: '20px'
+                                                }}
+                                            >
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'space-between',
+                                                        gap: '10px'
+                                                    }}
+                                                >
+                                                    <img
+                                                        src={_.get(item, 'author.avatar')}
+                                                        alt=""
+                                                        style={{
+                                                            width: '44px',
+                                                            height: '44px',
+                                                            borderRadius: '12px',
+                                                            objectFit: 'cover'
+                                                        }}
+                                                        loading="lazy"
+                                                    />
+                                                    <Box sx={{ flex: '1' }}>
+                                                        <Typography
+                                                            sx={{
+                                                                lineHeight: '22px',
+                                                                fontSize: '14px',
+                                                                color: '3E3232',
+                                                                fontWeight: '600',
+                                                                letterSpacing: '0.1px'
+                                                            }}
+                                                        >
+                                                            {_.get(item, 'author.name')}
+                                                        </Typography>
+                                                        <Typography
+                                                            sx={{
+                                                                lineHeight: '18px',
+                                                                fontSize: '12px',
+                                                                color: '3E3232',
+                                                                fontWeight: '500',
+                                                                letterSpacing: '0.25px'
+                                                            }}
+                                                        >
+                                                            {moment(_.get(item, 'createdAt', new Date())).format('MMMM DD, YYYY')}
+                                                        </Typography>
+                                                    </Box>
+                                                </Box>
                                             </Box>
                                         </Box>
                                     </Box>
-                                </Box>
+                                </Grid>
+                            );
+                        })}
+                        <Grid item xs={7} sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <Pagination
+                                count={totalPages}
+                                page={watch('page')}
+                                onChange={handlePageChange}
+                                variant="outlined"
+                                shape="rounded"
+                                className="paginationSection"
+                            />
+                        </Grid>
+                    </Grid>
+                </>
+            ) : (
+                <>
+                    <Grid container>
+                        <Grid item xs={12} sx={{ margin: '45px 0 20px 0' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                                <TitleBody title={`no results found for "${text}"`} />
                             </Box>
                         </Grid>
-                    );
-                })}
-                <Grid item xs={7} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Pagination count={10} variant="outlined" shape="rounded" />
-                </Grid>
-            </Grid>
+                    </Grid>
+                </>
+            )}
         </Container>
     );
 };

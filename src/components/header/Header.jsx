@@ -38,6 +38,9 @@ import { useTheme } from '@mui/material/styles';
 import LanguagePopover from '../popover/LanguagePopover';
 import { useNavigate } from 'react-router-dom';
 import Iconify from '../iconify/Iconify';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -70,6 +73,24 @@ const UserBox = styled(Box)(({ theme }) => ({
 
 const Header = ({ bannerUrl, navData }) => {
     const navi = useNavigate();
+
+    const schema = yup.object().shape({
+        text: yup.string().required('Please type somethings!')
+    });
+
+    const hookForm = useForm({
+        defaultValues: {
+            text: ''
+        },
+        resolver: yupResolver(schema)
+    });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = hookForm;
+
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -80,6 +101,11 @@ const Header = ({ bannerUrl, navData }) => {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleSearch = (data) => {
+        hookForm.reset();
+        navi(`/search/${_.get(data, 'text', '')}`);
     };
 
     return (
@@ -248,6 +274,7 @@ const Header = ({ bannerUrl, navData }) => {
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
                                 <Icons>
                                     <TextField
+                                        {...hookForm.register('text')}
                                         variant="standard"
                                         placeholder="Search Anything..."
                                         sx={{
@@ -267,7 +294,11 @@ const Header = ({ bannerUrl, navData }) => {
                                         InputProps={{
                                             endAdornment: (
                                                 <InputAdornment position="end">
-                                                    <Iconify icon={'iconamoon:search-thin'} sx={{ cursor: 'pointer' }} />
+                                                    <Iconify
+                                                        icon={'iconamoon:search-thin'}
+                                                        sx={{ cursor: 'pointer' }}
+                                                        onClick={hookForm.handleSubmit(handleSearch)}
+                                                    />
                                                 </InputAdornment>
                                             )
                                         }}
