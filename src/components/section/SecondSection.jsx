@@ -28,6 +28,7 @@ const SecondSection = ({ listPost }) => {
                             marginRight: '15px',
                             cursor: 'pointer'
                         }}
+                        onClick={() => navi(`/all-post`)}
                     >
                         <Typography>Show All</Typography>
                         <KeyboardArrowRightIcon />

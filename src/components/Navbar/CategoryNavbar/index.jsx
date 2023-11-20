@@ -20,19 +20,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 const CategoryNavbar = ({ listCateData }) => {
-    // const sliderRef = useRef(null);
-
-    // const handlePrev = useCallback(() => {
-    //     if (!sliderRef.current) return;
-    //     sliderRef.current.swiper.slidePrev();
-    //   }, []);
-
-    //   const handleNext = useCallback(() => {
-    //     if (!sliderRef.current) return;
-    //     sliderRef.current.swiper.slideNext();
-    //   }, []);
+    const navi = useNavigate();
 
     return (
         <Toolbar
@@ -65,8 +56,10 @@ const CategoryNavbar = ({ listCateData }) => {
                                             height: '48px',
                                             overflow: 'hidden',
                                             borderRadius: '10px',
+                                            cursor: 'pointer',
                                             boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px'
                                         }}
+                                        onClick={() => navi(`/tags/${_.get(item, 'name')}/${_.get(item, '_id')}`)}
                                     >
                                         <img
                                             src={_.get(item, 'imageUrl')}

@@ -5,8 +5,41 @@ import moment from 'moment';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
 import Pagination from '@mui/material/Pagination';
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { useQuery } from 'react-query';
+import PostApiService from '../../services/api-services/post.service';
 
 const AllPost = () => {
+    const hookForm = useForm({
+        defaultValues: {
+            page: 1
+        }
+    });
+
+    const { watch, setValue } = hookForm;
+
+    const { language } = useSelector((state) => state.local);
+
+    const qgetAllPost = useQuery(
+        ['qgetAllPost', watch('page')],
+        () => PostApiService.getListAllPost({ page: watch('page'), local: language }),
+        {
+            onSuccess: (data) => {
+                // console.log(data);
+            },
+            refetchOnWindowFocus: false
+        }
+    );
+
+    const results = _.get(qgetAllPost, 'data.data.data', []);
+    const totalResults = _.get(qgetAllPost, 'data.data.total', 1);
+    const totalPages = Math.ceil(totalResults / 8);
+
+    const handlePageChange = (event, value) => {
+        setValue('page', value);
+    };
+
     return (
         <>
             <Container maxWidth="lg">
@@ -18,8 +51,8 @@ const AllPost = () => {
                     </Grid>
                 </Grid>
 
-                <Grid container spacing={1.5}>
-                    {_.map([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], (item, index) => (
+                <Grid container spacing={2}>
+                    {_.map(results, (item, index) => (
                         <Grid item xs={12} md={3} key={index}>
                             <Box
                                 sx={{
@@ -31,7 +64,7 @@ const AllPost = () => {
                                 }}
                             >
                                 <img
-                                    src="https://crypto.news/app/uploads/2023/11/crypto-news-The-fall-of-FTX04.webp"
+                                    src={_.get(item, 'imageUrl')}
                                     style={{ width: '100%', height: '190px', borderRadius: '12px', objectFit: 'cover' }}
                                     alt=""
                                     loading="lazy"
@@ -48,7 +81,7 @@ const AllPost = () => {
                                         overflow: 'hidden'
                                     }}
                                 >
-                                    The fall of FTX: A tale of hubris in the crypto world | Opinion
+                                    {_.get(item, 'title')}
                                 </Typography>
                                 <Typography
                                     sx={{
@@ -62,8 +95,7 @@ const AllPost = () => {
                                         overflow: 'hidden'
                                     }}
                                 >
-                                    In the world of technology and cryptocurrency, a world where everyone seems to be a “founder”, “leader”
-                                    or “entrepreneur”, one word that seems to persistently hover in the atmosphere is “arrogance.”
+                                    {_.get(item, 'subTitle')}
                                 </Typography>
                                 <Box
                                     sx={{
@@ -74,7 +106,7 @@ const AllPost = () => {
                                 >
                                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
                                         <img
-                                            src="https://crypto.news/app/uploads/2023/10/crypto-news-BAD-Idea-AI04.webp"
+                                            src={_.get(item, 'author.avatar')}
                                             alt=""
                                             style={{
                                                 width: '44px',
@@ -94,7 +126,7 @@ const AllPost = () => {
                                                     letterSpacing: '0.1px'
                                                 }}
                                             >
-                                                John
+                                                {_.get(item, 'author.name')}
                                             </Typography>
                                             <Typography
                                                 sx={{
@@ -105,7 +137,7 @@ const AllPost = () => {
                                                     letterSpacing: '0.25px'
                                                 }}
                                             >
-                                                {moment(new Date()).format('MMMM DD, YYYY')}
+                                                {moment(_.get(item, 'createdAt', new Date())).format('MMMM DD, YYYY')}
                                             </Typography>
                                         </Box>
                                         <VisibilityIcon sx={{ color: 'grey' }} />
@@ -115,7 +147,14 @@ const AllPost = () => {
                         </Grid>
                     ))}
                     <Grid item xs={12} mt={3} sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <Pagination count={10} variant="outlined" shape="rounded" />
+                        <Pagination
+                            count={totalPages}
+                            page={watch('page')}
+                            onChange={handlePageChange}
+                            variant="outlined"
+                            shape="rounded"
+                            className="paginationSection"
+                        />
                     </Grid>
                 </Grid>
             </Container>

@@ -261,9 +261,11 @@ const Header = ({ bannerUrl, navData }) => {
 
                                         return (
                                             <Grid key={_.get(item, '_id', index)} item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                                <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
-                                                    {_.get(item, 'name', '')}
-                                                </Typography>
+                                                <Box onClick={() => navi(`/tags/${_.get(item, 'name')}/${_.get(item, '_id')}`)}>
+                                                    <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
+                                                        {_.get(item, 'name', '')}
+                                                    </Typography>
+                                                </Box>
                                             </Grid>
                                         );
                                     })}

@@ -27,13 +27,26 @@ class PostApiService {
         });
     }
 
+    getListAllPost(data) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: _.get(data, 'local'),
+                page: _.get(data, 'page'),
+                page_size: 12,
+                unpublished: 1,
+                isSpotlight: 0
+            }
+        });
+    }
+
     getListPostHotNews(local) {
         return axiosServices.get(`${this.baseApi}posts`, {
             params: {
                 local: local,
                 page: 1,
                 page_size: 10,
-                sort: '-views'
+                sort: '-views',
+                unpublished: 1
             }
         });
     }
@@ -44,7 +57,8 @@ class PostApiService {
                 local: local,
                 page: 1,
                 page_size: 5,
-                sort: '-views'
+                sort: '-views',
+                unpublished: 1
             }
         });
     }
@@ -54,7 +68,8 @@ class PostApiService {
             params: {
                 local: local,
                 isRandom: 1,
-                randomSelect: 10
+                randomSelect: 10,
+                unpublished: 1
             }
         });
     }
@@ -91,7 +106,20 @@ class PostApiService {
                 local: _.get(data, 'local'),
                 page: _.get(data, 'page'),
                 page_size: 8,
-                key_word: _.get(data, 'text')
+                key_word: _.get(data, 'text'),
+                unpublished: 1
+            }
+        });
+    }
+
+    getListPostTag(data) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: _.get(data, 'local'),
+                page: _.get(data, 'page'),
+                page_size: 8,
+                category_id: _.get(data, 'id'),
+                unpublished: 1
             }
         });
     }

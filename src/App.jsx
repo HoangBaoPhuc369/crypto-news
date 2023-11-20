@@ -45,7 +45,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/details/:id" element={<Details />} />
-                    <Route exact path="/tags/:tag" element={<TagPage />} />
+                    <Route exact path="/tags/:tagName/:tagId" element={<TagPage />} />
                     <Route exact path="/search/:text" element={<SearchPage />} />
                     <Route exact path="/all-post" element={<AllPost />} />
                 </Routes>
