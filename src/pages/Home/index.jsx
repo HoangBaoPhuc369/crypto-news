@@ -43,7 +43,14 @@ const Home = () => {
 
     const qgetListPostRandom = useQuery(['qgetListPostRandom', language], () => PostApiService.getListPostRandom(language), {
         onSuccess: (data) => {
-            console.log(data);
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetListPostRandom2 = useQuery(['qgetListPostRandom2', language], () => PostApiService.getListPostRandom(language), {
+        onSuccess: (data) => {
+            // console.log(data);
         },
         refetchOnWindowFocus: false
     });
@@ -60,6 +67,7 @@ const Home = () => {
             <Body
                 bannerUrl={_.get(qgetMediumBanner, 'data.data.bannerUrl', '')}
                 listPostRandom={_.get(qgetListPostRandom, 'data.data.data', [])}
+                listPostRandom2={_.get(qgetListPostRandom2, 'data.data.data', [])}
                 listPost={_.get(qgetListPost, 'data.data.data', [])}
                 listCateData={_.get(qgetListCategoryList, 'data.data.data', [])}
             />

@@ -74,6 +74,17 @@ class PostApiService {
         });
     }
 
+    getListPostRecent(local) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: local,
+                isRandom: 1,
+                randomSelect: 3,
+                unpublished: 1
+            }
+        });
+    }
+
     getDetailPost(data) {
         return axiosServices.get(`${this.baseApi}posts/${_.get(data, 'id')}`, {
             params: {

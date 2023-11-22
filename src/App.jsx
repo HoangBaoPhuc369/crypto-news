@@ -10,6 +10,7 @@ import Details from './components/detail/Details';
 import { useQuery } from 'react-query';
 import CategoryApiService from './services/api-services/category.service';
 import BannerApiService from './services/api-services/banner.service';
+import PostApiService from './services/api-services/post.service';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import AllPost from './pages/AllPost';
@@ -35,6 +36,13 @@ function App() {
         refetchOnWindowFocus: false
     });
 
+    const qgetListPostRecent = useQuery(['qgetListPostRecent', language], () => PostApiService.getListPostRecent(language), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
     return (
         <>
             <Box bgcolor={'background.default'} color={'text.primary'}>
@@ -49,7 +57,7 @@ function App() {
                     <Route exact path="/search/:text" element={<SearchPage />} />
                     <Route exact path="/all-post" element={<AllPost />} />
                 </Routes>
-                <Footer />
+                <Footer listPostRecent={_.get(qgetListPostRecent, 'data.data.data', [])} />
             </Box>
         </>
     );

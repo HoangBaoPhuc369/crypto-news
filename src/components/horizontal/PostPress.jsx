@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 
-const PostPress = ({ title }) => {
+const PostPress = ({ title, listPostRandom2 }) => {
     return (
         <Grid item container>
             <Grid item xs={12}>
@@ -34,19 +34,34 @@ const PostPress = ({ title }) => {
                                     modules={[Autoplay]}
                                     className="PostPressSwiper"
                                 >
-                                    {_.map(fakeDataPost2, (item, index) => {
+                                    {_.map(listPostRandom2, (item, index) => {
                                         return (
                                             <SwiperSlide key={index}>
                                                 <Box sx={{ margin: '0 15px', width: '252px' }}>
                                                     <img
-                                                        src={_.get(item, 'img')}
+                                                        src={_.get(item, 'imageUrl')}
                                                         alt=""
-                                                        style={{ width: '252px', height: '150px', borderRadius: '16px' }}
+                                                        loading="lazy"
+                                                        style={{
+                                                            width: '252px',
+                                                            height: '150px',
+                                                            borderRadius: '16px',
+                                                            objectFit: 'cover'
+                                                        }}
                                                     />
                                                     <Typography
-                                                        sx={{ fontSize: '16px', color: '#17191a', fontWeight: '600', lineHeight: '1.3' }}
+                                                        sx={{
+                                                            fontSize: '16px',
+                                                            color: '#17191a',
+                                                            fontWeight: '600',
+                                                            lineHeight: '1.3',
+                                                            display: '-webkit-box',
+                                                            WebkitBoxOrient: 'vertical',
+                                                            WebkitLineClamp: 2,
+                                                            overflow: 'hidden'
+                                                        }}
                                                     >
-                                                        Deutsche Bank to secure crypto for institutions, TRX and DOMI may find support
+                                                        {_.get(item, 'title')}
                                                     </Typography>
                                                 </Box>
                                             </SwiperSlide>

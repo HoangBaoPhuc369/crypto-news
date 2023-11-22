@@ -10,7 +10,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TitleBody from '../title/TitleBody';
 
-const Footer = () => {
+const Footer = ({ listPostRecent }) => {
     return (
         <Box sx={{ background: '#f5f5f5', padding: '2rem', marginTop: '100px' }}>
             <Container maxWidth="lg">
@@ -44,11 +44,11 @@ const Footer = () => {
                             </Box>
                         </Grid>
                         <Box sx={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-                            {_.map(['News', 'Crypto', 'Block chain'], (item, index) => {
+                            {_.map(listPostRecent, (item, index) => {
                                 return (
-                                    <Box sx={{ display: 'flex', gap: '15px' }}>
+                                    <Box sx={{ display: 'flex', gap: '15px' }} key={index}>
                                         <img
-                                            src="https://crypto.news/app/uploads/2023/09/crypto-news-people-talk-office-background-dark-tones-sixties-retro-futuristic-illustration.jpg.webp"
+                                            src={_.get(item, 'imageUrl')}
                                             alt=""
                                             style={{ width: '87px', height: '87px', borderRadius: '12px', objectFit: 'cover' }}
                                         />
