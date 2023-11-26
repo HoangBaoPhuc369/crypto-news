@@ -11,6 +11,7 @@ import { useQuery } from 'react-query';
 import CategoryApiService from './services/api-services/category.service';
 import BannerApiService from './services/api-services/banner.service';
 import PostApiService from './services/api-services/post.service';
+import SocialApiService from './services/api-services/social.service';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import AllPost from './pages/AllPost';
@@ -31,12 +32,19 @@ function App() {
 
     const qgetLargeBanner = useQuery(['qgetLargeBanner', language], () => BannerApiService.getBanner('LARGE_HEADER_BANNER'), {
         onSuccess: (data) => {
-            console.log(data);
+            // console.log(data);
         },
         refetchOnWindowFocus: false
     });
 
     const qgetListPostRecent = useQuery(['qgetListPostRecent', language], () => PostApiService.getListPostRecent(language), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetListSocial = useQuery(['qgetListSocial'], () => SocialApiService.getSocial(), {
         onSuccess: (data) => {
             // console.log(data);
         },
@@ -57,7 +65,10 @@ function App() {
                     <Route exact path="/search/:text" element={<SearchPage />} />
                     <Route exact path="/all-post" element={<AllPost />} />
                 </Routes>
-                <Footer listPostRecent={_.get(qgetListPostRecent, 'data.data.data', [])} />
+                <Footer
+                    listPostRecent={_.get(qgetListPostRecent, 'data.data.data', [])}
+                    listSocial={_.get(qgetListSocial, 'data.data.data', [])}
+                />
             </Box>
         </>
     );

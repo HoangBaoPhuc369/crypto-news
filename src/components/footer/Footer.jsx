@@ -10,7 +10,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TitleBody from '../title/TitleBody';
 
-const Footer = ({ listPostRecent }) => {
+const Footer = ({ listPostRecent, listSocial }) => {
     return (
         <Box sx={{ background: '#f5f5f5', padding: '2rem', marginTop: '100px' }}>
             <Container maxWidth="lg">
@@ -82,45 +82,23 @@ const Footer = ({ listPostRecent }) => {
 
                         <Grid item xs={12}>
                             <Box sx={{ display: 'flex', gap: '15px' }}>
-                                <Box
-                                    sx={{
-                                        background: '#de0b02',
-                                        width: '30px',
-                                        height: '30px',
-                                        borderRadius: '50%',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center'
-                                    }}
-                                >
-                                    <TelegramIcon sx={{ color: '#fff', fontSize: '20px' }} />
-                                </Box>
-                                <Box
-                                    sx={{
-                                        background: '#de0b02',
-                                        width: '30px',
-                                        height: '30px',
-                                        borderRadius: '50%',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center'
-                                    }}
-                                >
-                                    <YouTubeIcon sx={{ color: '#fff', fontSize: '20px' }} />
-                                </Box>
-                                <Box
-                                    sx={{
-                                        background: '#de0b02',
-                                        width: '30px',
-                                        height: '30px',
-                                        borderRadius: '50%',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center'
-                                    }}
-                                >
-                                    <TwitterIcon sx={{ color: '#fff', fontSize: '20px' }} />
-                                </Box>
+                                {_.map(listSocial, (item) => (
+                                    <a href={_.get(item, 'link')} key={_.get(item, '_id')}>
+                                        <img
+                                            alt=""
+                                            src={_.get(item, 'iconUrl')}
+                                            loading="lazy"
+                                            style={{
+                                                width: '30px',
+                                                height: '30px',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}
+                                        />
+                                    </a>
+                                ))}
                             </Box>
                         </Grid>
                     </Grid>

@@ -134,5 +134,17 @@ class PostApiService {
             }
         });
     }
+
+    getListPostTags(data) {
+        return axiosServices.get(`${this.baseApi}posts`, {
+            params: {
+                local: _.get(data, 'local'),
+                page: _.get(data, 'page'),
+                page_size: 8,
+                category_id: _.get(data, 'id'),
+                unpublished: 1
+            }
+        });
+    }
 }
 export default new PostApiService();
