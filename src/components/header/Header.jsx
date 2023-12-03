@@ -120,7 +120,7 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                 </Grid>
 
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>
-                    <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
+                    <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '42px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
                             {_.map(cryptoData, (item, index) => (
                                 <Box
