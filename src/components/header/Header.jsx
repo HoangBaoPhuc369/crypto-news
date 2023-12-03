@@ -71,7 +71,7 @@ const UserBox = styled(Box)(({ theme }) => ({
     }
 }));
 
-const Header = ({ bannerUrl, navData }) => {
+const Header = ({ cryptoData, bannerUrl, navData }) => {
     const navi = useNavigate();
 
     const schema = yup.object().shape({
@@ -122,7 +122,7 @@ const Header = ({ bannerUrl, navData }) => {
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>
                     <Marquee speed={100} style={{ overflow: 'hidden', background: '#eeee', height: '32px' }} gradient={false}>
                         <Box sx={{ display: 'flex', p: 0 }}>
-                            {_.map(_.get(dataCrypto, 'data', []), (item, index) => (
+                            {_.map(cryptoData, (item, index) => (
                                 <Box
                                     sx={{
                                         p: '0 10px',

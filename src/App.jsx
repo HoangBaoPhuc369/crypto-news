@@ -12,6 +12,7 @@ import CategoryApiService from './services/api-services/category.service';
 import BannerApiService from './services/api-services/banner.service';
 import PostApiService from './services/api-services/post.service';
 import SocialApiService from './services/api-services/social.service';
+import CryptoApiService from './services/api-services/crypto.service';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import AllPost from './pages/AllPost';
@@ -51,10 +52,23 @@ function App() {
         refetchOnWindowFocus: false
     });
 
+    const fetchCrypto = useQuery(['cryptoCurrentcy'], () => CryptoApiService.getCrypto(), {
+        onError: (err) => {
+            console.log(err);
+        },
+        onSuccess: (response) => {
+            // console.log(response);
+        },
+        refetchInterval: 60 * 60 * 1000,
+        keepPreviousData: true,
+        refetchOnWindowFocus: false
+    });
+
     return (
         <>
             <Box bgcolor={'background.default'} color={'text.primary'}>
                 <Header
+                    cryptoData={_.get(fetchCrypto, 'data.data', [])}
                     bannerUrl={_.get(qgetLargeBanner, 'data.data.bannerUrl', '')}
                     navData={_.get(qgetListCategoryHeader, 'data.data.data', [])}
                 />

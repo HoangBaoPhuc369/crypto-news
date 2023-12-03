@@ -12,7 +12,7 @@ import TitleBody from '../title/TitleBody';
 
 const Footer = ({ listPostRecent, listSocial }) => {
     return (
-        <Box sx={{ background: '#f5f5f5', padding: '2rem', marginTop: '100px' }}>
+        <Box sx={{ background: '#f5f5f5', marginTop: '100px' }}>
             <Container maxWidth="lg">
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
@@ -24,16 +24,12 @@ const Footer = ({ listPostRecent, listSocial }) => {
                         <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px', margin: '15px 0' }} alt="" />
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                             <Typography variant="body2" sx={{ color: '#888' }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus justo ac nunc commodo, nec tempus
-                                neque sollicitudin.
+                                Kurosai is the fastest and most accurate cryptocurrency information portal in Japanese and English, giving
+                                readers an overview of the cryptocurrency industry and blockchain technology advances globally.
                             </Typography>
                             <Typography variant="body2" sx={{ color: '#888', display: 'flex', alignItems: 'center', gap: '5px' }}>
                                 <EmailIcon sx={{ fontSize: '16px' }} />
-                                info@example.com
-                            </Typography>
-                            <Typography variant="body2" sx={{ color: '#888', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                <PhoneCallbackIcon sx={{ fontSize: '16px' }} />
-                                info@example.com
+                                Kurosaijp@gmail.com
                             </Typography>
                         </Box>
                     </Grid>
@@ -104,6 +100,11 @@ const Footer = ({ listPostRecent, listSocial }) => {
                     </Grid>
                 </Grid>
             </Container>
+            <Box px={1} sx={{ background: '#FFF', textAlign: 'center' }}>
+                <Typography sx={{ color: '#212B36', fontSize: '12px', fontWeight: '400', marginTop: '20px' }}>
+                    Copyright © 2018 by Kurosai
+                </Typography>
+            </Box>
         </Box>
     );
 };

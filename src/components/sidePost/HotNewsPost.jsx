@@ -15,6 +15,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
 import moment from 'moment/moment';
 import { useNavigate } from 'react-router-dom';
+import Iconify from '../iconify/Iconify';
 
 const HotNewsPost = ({ hotNewsPost }) => {
     const navi = useNavigate();
@@ -161,7 +162,7 @@ const HotNewsPost = ({ hotNewsPost }) => {
                                                     {moment(_.get(item, 'createdAt', new Date())).format('MMMM DD, YYYY')}
                                                 </Typography>
                                             </Box>
-                                            <VisibilityIcon sx={{ color: 'grey' }} />
+                                            <Iconify icon={'solar:eye-outline'} sx={{ cursor: 'pointer' }} />
                                         </Box>
                                     </Box>
                                 </Box>

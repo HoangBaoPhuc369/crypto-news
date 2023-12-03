@@ -1,7 +1,7 @@
 import axiosServices from '../../utils/axios';
 
 class CryptoApiService {
-    baseApi = 'https://api.coingecko.com/api/v3/';
+    baseApi = import.meta.env.VITE_API_CRYPTO_URL;
     getCrypto() {
         return axiosServices.get(`${this.baseApi}coins/markets`, {
             params: {

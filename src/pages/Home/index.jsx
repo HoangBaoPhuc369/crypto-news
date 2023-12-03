@@ -12,15 +12,6 @@ import BannerApiService from '../../services/api-services/banner.service';
 import _ from 'lodash';
 
 const Home = () => {
-    // const fetchCrypto = useQuery(['cryptoCurrentcy'], () => CryptoApiService.getCrypto(), {
-    //     onError: (err) => {
-    //         console.log(err);
-    //     },
-    //     onSuccess: (response) => {
-    //         console.log(response);
-    //     }
-    // });
-
     const { language } = useSelector((state) => state.local);
 
     const qgetListCategoryList = useQuery(

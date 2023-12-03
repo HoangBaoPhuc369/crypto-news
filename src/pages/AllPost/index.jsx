@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useQuery } from 'react-query';
 import PostApiService from '../../services/api-services/post.service';
+import Iconify from '../../components/iconify/Iconify';
 
 const AllPost = () => {
     const hookForm = useForm({
@@ -140,7 +141,7 @@ const AllPost = () => {
                                                 {moment(_.get(item, 'createdAt', new Date())).format('MMMM DD, YYYY')}
                                             </Typography>
                                         </Box>
-                                        <VisibilityIcon sx={{ color: 'grey' }} />
+                                        <Iconify icon={'solar:eye-outline'} sx={{ cursor: 'pointer' }} />
                                     </Box>
                                 </Box>
                             </Box>
