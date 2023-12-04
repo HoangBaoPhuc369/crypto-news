@@ -18,8 +18,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import PostApiService from '../../services/api-services/post.service';
 import { useMutation } from 'react-query';
 import { LoadingButton } from '@mui/lab';
+import { useNavigate } from 'react-router-dom';
 
 const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }) => {
+    const navi = useNavigate();
+
     const schema = yup.object().shape({
         name: yup.string().required('Please enter a name'),
         email: yup.string().email('Email not valid').required('Please enter a email'),
@@ -359,7 +362,11 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
                                 <Box sx={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                                     {_.map(topPost, (item) => {
                                         return (
-                                            <Box sx={{ display: 'flex', gap: '15px' }} key={_.get(item, '_id')}>
+                                            <Box
+                                                sx={{ display: 'flex', gap: '15px', cursor: 'pointer' }}
+                                                key={_.get(item, '_id')}
+                                                onClick={() => navi(`/details/${_.get(item, '_id')}`)}
+                                            >
                                                 <img
                                                     src={_.get(item, 'imageUrl')}
                                                     alt=""

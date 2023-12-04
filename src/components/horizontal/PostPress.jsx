@@ -5,8 +5,11 @@ import { fakeDataPost2 } from '../../data/fakeDataPost';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 
 const PostPress = ({ title, listPostRandom2 }) => {
+    const navi = useNavigate();
+
     return (
         <Grid item container>
             <Grid item xs={12}>
@@ -37,7 +40,10 @@ const PostPress = ({ title, listPostRandom2 }) => {
                                     {_.map(listPostRandom2, (item, index) => {
                                         return (
                                             <SwiperSlide key={index}>
-                                                <Box sx={{ margin: '0 15px', width: '252px' }}>
+                                                <Box
+                                                    sx={{ margin: '0 15px', width: '252px', cursor: 'pointer' }}
+                                                    onClick={() => navi(`/details/${_.get(item, '_id')}`)}
+                                                >
                                                     <img
                                                         src={_.get(item, 'imageUrl')}
                                                         alt=""
