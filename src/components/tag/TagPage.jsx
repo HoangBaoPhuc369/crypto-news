@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Pagination, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CategoryNavbar from '../Navbar/CategoryNavbar';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
@@ -13,6 +13,7 @@ import moment from 'moment';
 
 const TagPage = () => {
     const { tagName, tagId } = useParams();
+    const navi = useNavigate();
 
     const hookForm = useForm({
         defaultValues: {
@@ -74,6 +75,7 @@ const TagPage = () => {
                                             borderRadius: '12px',
                                             cursor: 'pointer'
                                         }}
+                                        onClick={() => navi(`/details/${_.get(item, '_id')}`)}
                                     >
                                         <img
                                             src={_.get(item, 'imageUrl')}
