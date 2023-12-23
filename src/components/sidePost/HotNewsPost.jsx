@@ -70,7 +70,35 @@ const HotNewsPost = ({ hotNewsPost }) => {
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', height: '450px' }}>
-                <Swiper ref={sliderRef} spaceBetween={12} slidesPerView={3.3} autoplay={true} className="PostSideSwiper">
+                <Swiper
+                    ref={sliderRef}
+                    spaceBetween={12}
+                    slidesPerView={3.3}
+                    autoplay={true}
+                    className="PostSideSwiper"
+                    breakpoints={{
+                        400: {
+                            slidesPerView: 1.1,
+                            spaceBetween: 12
+                        },
+                        500: {
+                            slidesPerView: 1.1,
+                            spaceBetween: 12
+                        },
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 12
+                        },
+                        768: {
+                            slidesPerView: 2.5,
+                            spaceBetween: 12
+                        },
+                        1024: {
+                            slidesPerView: 3.3,
+                            spaceBetween: 12
+                        }
+                    }}
+                >
                     {_.map(hotNewsPost, (item, index) => {
                         return (
                             <SwiperSlide key={_.get(item, '_id', index)}>

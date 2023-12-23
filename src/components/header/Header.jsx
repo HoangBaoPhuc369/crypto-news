@@ -116,7 +116,12 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
             <AppBar position="static" sx={{ background: 'transparent', boxShadow: 'unset' }}>
                 {/* Thanh ngang hiển thị giá crypto */}
                 <Grid xs={12}>
-                    <img src={bannerUrl} alt="" style={{ width: '100%', height: '300px', objectFit: 'cover' }} loading="lazy" />
+                    <img
+                        src={bannerUrl}
+                        alt=""
+                        style={{ width: '100%', height: { xs: 'auto', md: '300px' }, objectFit: 'cover' }}
+                        loading="lazy"
+                    />
                 </Grid>
 
                 <Box sx={{ backgroundColor: '#f5f5f5' }}>
@@ -260,7 +265,11 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                                         }
 
                                         return (
-                                            <Grid key={_.get(item, '_id', index)} item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
+                                            <Grid
+                                                key={_.get(item, '_id', index)}
+                                                item
+                                                sx={{ cursor: 'pointer', fontFamily: 'monospace', display: { xs: 'none', md: 'block' } }}
+                                            >
                                                 <Box onClick={() => navi(`/tags/${_.get(item, 'name')}/${_.get(item, '_id')}`)}>
                                                     <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
                                                         {_.get(item, 'name', '')}

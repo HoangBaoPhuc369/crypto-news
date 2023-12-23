@@ -10,7 +10,7 @@ const MainBanner = ({ postSpotlight }) => {
         <Grid item container spacing={2} mt={1.5}>
             <Grid item xs={12} lg={6}>
                 <Box
-                    sx={{ height: '546px', width: '100%', position: 'relative', cursor: 'pointer' }}
+                    sx={{ height: { xs: '370px', md: '546px' }, width: '100%', position: 'relative', cursor: 'pointer' }}
                     onClick={() => navi(`/details/${_.get(postSpotlight[0], '_id')}`)}
                 >
                     <img
@@ -23,7 +23,7 @@ const MainBanner = ({ postSpotlight }) => {
                     <Box
                         sx={{
                             position: 'absolute',
-                            height: '200px',
+                            height: { xs: '150px', md: '200px' },
                             width: 'inherit',
                             background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 65.67%)',
                             bottom: 0,
@@ -37,7 +37,7 @@ const MainBanner = ({ postSpotlight }) => {
                     >
                         <Typography
                             sx={{
-                                fontSize: '28px',
+                                fontSize: { xs: '20px', md: '28px' },
                                 color: '#fff',
                                 fontWeight: '600',
                                 lineHeight: '1.3',
@@ -58,7 +58,7 @@ const MainBanner = ({ postSpotlight }) => {
                     <Grid item xs={12}>
                         <Box
                             sx={{
-                                height: '258px',
+                                height: { xs: '170px', md: '258px' },
                                 borderRadius: '15px',
                                 boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
                                 position: 'relative',
@@ -75,7 +75,7 @@ const MainBanner = ({ postSpotlight }) => {
                             <Box
                                 sx={{
                                     position: 'absolute',
-                                    height: '100px',
+                                    // height: '100px',
                                     width: '100%',
                                     background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 65.67%)',
                                     bottom: 0,
@@ -90,7 +90,7 @@ const MainBanner = ({ postSpotlight }) => {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: '20px',
+                                        fontSize: { xs: '14px', md: '20px' },
                                         color: '#fff',
                                         fontWeight: '600',
                                         lineHeight: '1.3',
@@ -109,7 +109,7 @@ const MainBanner = ({ postSpotlight }) => {
                     <Grid item xs={6}>
                         <Box
                             sx={{
-                                height: '270px',
+                                height: { xs: '180px', md: '270px' },
                                 width: '100%',
                                 borderRadius: '15px',
                                 boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
@@ -141,7 +141,7 @@ const MainBanner = ({ postSpotlight }) => {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: '20px',
+                                        fontSize: { xs: '14px', md: '20px' },
                                         color: '#fff',
                                         fontWeight: '600',
                                         lineHeight: '1.3',
@@ -160,7 +160,7 @@ const MainBanner = ({ postSpotlight }) => {
                     <Grid item xs={6}>
                         <Box
                             sx={{
-                                height: '270px',
+                                height: { xs: '180px', md: '270px' },
                                 width: '100%',
                                 borderRadius: '15px',
                                 boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px',
@@ -192,7 +192,7 @@ const MainBanner = ({ postSpotlight }) => {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: '20px',
+                                        fontSize: { xs: '14px', md: '20px' },
                                         color: '#fff',
                                         fontWeight: '600',
                                         lineHeight: '1.3',
