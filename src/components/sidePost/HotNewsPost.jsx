@@ -78,24 +78,24 @@ const HotNewsPost = ({ hotNewsPost }) => {
                     className="PostSideSwiper"
                     breakpoints={{
                         400: {
-                            slidesPerView: 1.1,
-                            spaceBetween: 12
+                            slidesPerView: 1,
+                            spaceBetween: 24
                         },
                         500: {
                             slidesPerView: 1.1,
-                            spaceBetween: 12
+                            spaceBetween: 24
                         },
                         640: {
                             slidesPerView: 2,
-                            spaceBetween: 12
+                            spaceBetween: 24
                         },
                         768: {
                             slidesPerView: 2.5,
-                            spaceBetween: 12
+                            spaceBetween: 24
                         },
                         1024: {
                             slidesPerView: 3.3,
-                            spaceBetween: 12
+                            spaceBetween: 24
                         }
                     }}
                 >
@@ -104,7 +104,7 @@ const HotNewsPost = ({ hotNewsPost }) => {
                             <SwiperSlide key={_.get(item, '_id', index)}>
                                 <Box
                                     sx={{
-                                        width: '320px',
+                                        width: '100%',
                                         // minHeight: '390px',
                                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                                         borderRadius: '12px',

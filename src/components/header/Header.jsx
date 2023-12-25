@@ -93,16 +93,6 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
-        if (anchorEl !== event.currentTarget) {
-            setAnchorEl(event.currentTarget);
-        }
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
     const handleSearch = (data) => {
         hookForm.reset();
         navi(`/search/${_.get(data, 'text', '')}`);

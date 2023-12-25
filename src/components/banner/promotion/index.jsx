@@ -9,7 +9,13 @@ const PromotionBanner = ({ bannerUrl }) => {
                 <Grid item xs={12}>
                     <img
                         src={bannerUrl}
-                        style={{ width: '100%', height: '120px', margin: '18px 0 0 0', objectFit: 'cover', borderRadius: '8px' }}
+                        style={{
+                            width: '100%',
+                            height: { xs: 'auto', md: '120px' },
+                            margin: '18px 0 0 0',
+                            objectFit: 'cover',
+                            borderRadius: '8px'
+                        }}
                         alt=""
                         loading="lazy"
                     />

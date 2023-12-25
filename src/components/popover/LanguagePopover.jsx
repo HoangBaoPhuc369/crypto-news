@@ -6,6 +6,7 @@ import UsFlag from '../../assets/icons/ic_flag_us.svg';
 import JpFlag from '../../assets/icons/ic_flag_jp.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocal } from '../../store/slices/local';
+import { useNavigate } from 'react-router-dom';
 
 // ----------------------------------------------------------------------
 
@@ -41,6 +42,8 @@ export default function LanguagePopover() {
     // const handleSetFlag = (target) => {
     //     setFlag(target);
     // };
+
+    const navi = useNavigate();
 
     return (
         <>
@@ -91,6 +94,7 @@ export default function LanguagePopover() {
                                 // handleSetFlag(option.value);
                                 dispatch(getLocal(option.value));
                                 handleClose();
+                                navi('/');
                             }}
                         >
                             <Box component="img" alt={option.label} src={option.icon} sx={{ width: '28px', height: '28px', mr: 2 }} />
