@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './style.css';
-import { Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
@@ -71,13 +71,46 @@ const SidePost = ({ title, listPost }) => {
                 </Box>
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', height: '450px' }}>
-                <Swiper ref={sliderRef} spaceBetween={12} slidesPerView={3.3} autoplay={true} className="PostSideSwiper">
+                <Swiper
+                    ref={sliderRef}
+                    spaceBetween={12}
+                    slidesPerView={3.3}
+                    loop
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false
+                    }}
+                    modules={[Autoplay]}
+                    className="PostSideSwiper"
+                    breakpoints={{
+                        400: {
+                            slidesPerView: 1,
+                            spaceBetween: 24
+                        },
+                        500: {
+                            slidesPerView: 1.1,
+                            spaceBetween: 24
+                        },
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 24
+                        },
+                        768: {
+                            slidesPerView: 2.5,
+                            spaceBetween: 24
+                        },
+                        1024: {
+                            slidesPerView: 3.3,
+                            spaceBetween: 24
+                        }
+                    }}
+                >
                     {_.map(listPost, (item, index) => {
                         return (
                             <SwiperSlide key={_.get(item, '_id')}>
                                 <Box
                                     sx={{
-                                        width: '320px',
+                                        width: '100%',
                                         // minHeight: '390px',
                                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                                         borderRadius: '12px',
@@ -100,7 +133,8 @@ const SidePost = ({ title, listPost }) => {
                                             display: '-webkit-box',
                                             WebkitBoxOrient: 'vertical',
                                             WebkitLineClamp: 2,
-                                            overflow: 'hidden'
+                                            overflow: 'hidden',
+                                            height: '48px'
                                         }}
                                     >
                                         {_.get(item, 'title')}
@@ -114,7 +148,8 @@ const SidePost = ({ title, listPost }) => {
                                             display: '-webkit-box',
                                             WebkitBoxOrient: 'vertical',
                                             WebkitLineClamp: 2,
-                                            overflow: 'hidden'
+                                            overflow: 'hidden',
+                                            height: '42px'
                                         }}
                                     >
                                         {_.get(item, 'subTitle')}

@@ -62,8 +62,8 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
 
     return (
         <>
-            <Grid item xs={12} sx={{ display: 'flex', gap: '24px' }}>
-                <Grid item xs={8} sx={{ margin: '20px 0' }}>
+            <Grid container spacing={2}>
+                <Grid item xs={12} md={8} sx={{ margin: '20px 0' }}>
                     <Grid
                         item
                         xs={12}
@@ -80,24 +80,26 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
                                 display: 'flex',
                                 justifyContent: 'center',
                                 padding: '32px 32px 10px',
-                                fontSize: '30px',
+                                fontSize: { xs: '24px', md: '30px' },
                                 fontWeight: '700'
                             }}
                         >
                             {_.get(post, 'title')}
                         </Typography>
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                            <img
+                            <Box
+                                component="img"
                                 src={_.get(post, 'imageUrl')}
-                                style={{
+                                sx={{
                                     width: 'calc(100% - 32px)',
-                                    height: '450px',
+                                    height: { xs: '250px', md: '450px' },
                                     borderRadius: '16px',
                                     marginBottom: '16px',
                                     objectFit: 'cover',
                                     boxShadow: 'rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px'
                                 }}
                                 alt=""
+                                loading="lazy"
                             />
                         </Box>
                     </Grid>
@@ -105,17 +107,21 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
                     <Grid item xs={12} mt={3} sx={{ display: 'flex', gap: '26px', justifyContent: 'center' }}>
                         <Box sx={{ display: 'flex', gap: '8px' }}>
                             <CalendarMonthIcon sx={{ color: '#3E323280', fontSize: '20px' }} />
-                            <Typography sx={{ color: '#3E323280', fontSize: '14px' }}>
+                            <Typography sx={{ color: '#3E323280', fontSize: { xs: '10px', md: '14px' } }}>
                                 {moment(_.get(post, 'createdAt', new Date())).format('MMMM DD, YYYY')}
                             </Typography>
                         </Box>
                         <Box sx={{ display: 'flex', gap: '8px' }}>
                             <PersonIcon sx={{ color: '#3E323280', fontSize: '20px' }} />
-                            <Typography sx={{ color: '#3E323280', fontSize: '14px' }}>By {_.get(post, 'author.name')}</Typography>
+                            <Typography sx={{ color: '#3E323280', fontSize: { xs: '10px', md: '14px' } }}>
+                                By {_.get(post, 'author.name')}
+                            </Typography>
                         </Box>
                         <Box sx={{ display: 'flex', gap: '8px' }}>
                             <CategoryIcon sx={{ color: '#3E323280', fontSize: '20px' }} />
-                            <Typography sx={{ color: '#3E323280', fontSize: '14px' }}>{_.get(post, 'categoryName')}</Typography>
+                            <Typography sx={{ color: '#3E323280', fontSize: { xs: '10px', md: '14px' } }}>
+                                {_.get(post, 'categoryName')}
+                            </Typography>
                         </Box>
                     </Grid>
 
@@ -126,7 +132,7 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
                                 display: 'flex',
                                 padding: '10px 25px',
                                 justifyContent: 'center',
-                                fontSize: '24px',
+                                fontSize: { xs: '16px', md: '24px' },
                                 fontWeight: '600',
                                 color: '#444a4d',
                                 wordBreak: 'break-word',
@@ -315,7 +321,8 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
                         </Box>
                     </Grid>
                 </Grid>
-                <Grid item xs={4}>
+
+                <Grid item xs={12} md={4}>
                     <Grid item xs={12}>
                         <Box sx={{ borderRadius: '16px', background: '#F5F5F5' }}>
                             <Grid item xs={12}>

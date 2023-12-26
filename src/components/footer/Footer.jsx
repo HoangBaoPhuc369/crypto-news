@@ -15,7 +15,7 @@ const Footer = ({ listPostRecent, listSocial }) => {
         <Box sx={{ background: '#f5f5f5', marginTop: '100px' }}>
             <Container maxWidth="lg">
                 <Grid container spacing={2}>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Grid item xs={12} sx={{}}>
                             <Box sx={{ position: 'relative' }}>
                                 <TitleBody title="About" />
@@ -33,7 +33,7 @@ const Footer = ({ listPostRecent, listSocial }) => {
                             </Typography>
                         </Box>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Grid item xs={12} sx={{}}>
                             <Box sx={{ position: 'relative', marginBottom: '15px' }}>
                                 <TitleBody title="Recent Post" />
@@ -69,7 +69,7 @@ const Footer = ({ listPostRecent, listSocial }) => {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={4}>
                         <Grid item xs={12} sx={{}}>
                             <Box sx={{ position: 'relative', marginBottom: '15px' }}>
                                 <TitleBody title="Social" />

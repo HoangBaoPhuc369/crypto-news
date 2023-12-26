@@ -6,7 +6,7 @@ const TitleBody = ({ title }) => {
         <>
             <Typography
                 sx={{
-                    fontSize: '20.5px',
+                    fontSize: { xs: '16.5px', md: '20.5px' },
                     fontWeight: '500',
                     color: '#de0b02',
                     px: '10px',

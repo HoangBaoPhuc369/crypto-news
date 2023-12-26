@@ -1,5 +1,17 @@
-.ql-css-img img {
-    border-radius: 12px;
-    width: calc(100% - 120px);
-    height: 350px;
+@media (min-width: 900px) {
+    .ql-css-img img {
+        border-radius: 12px;
+        width: calc(100% - 120px);
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 899px) {
+    .ql-css-img img {
+        border-radius: 12px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
 }

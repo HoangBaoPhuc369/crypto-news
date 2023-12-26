@@ -21,10 +21,18 @@ const PostPress = ({ title, listPostRandom2 }) => {
                     }}
                 >
                     <Container maxWidth={'lg'} sx={{ padding: '24px 0' }}>
+                        <Typography
+                            sx={{
+                                fontSize: '32px',
+                                color: '#17191a',
+                                fontWeight: '600',
+                                marginBottom: '30px',
+                                marginLeft: { xs: '10px', md: '0px' }
+                            }}
+                        >
+                            {title}
+                        </Typography>
                         <Grid container>
-                            <Grid item xs={12} sx={{ marginBottom: '30px' }}>
-                                <Typography sx={{ fontSize: '32px', color: '#17191a', fontWeight: '600' }}>{title}</Typography>
-                            </Grid>
                             <Grid item xs={12} sx={{ display: 'flex' }}>
                                 <Swiper
                                     spaceBetween={30}
@@ -35,6 +43,28 @@ const PostPress = ({ title, listPostRandom2 }) => {
                                         disableOnInteraction: false
                                     }}
                                     modules={[Autoplay]}
+                                    breakpoints={{
+                                        400: {
+                                            slidesPerView: 1.4,
+                                            spaceBetween: 16
+                                        },
+                                        500: {
+                                            slidesPerView: 2,
+                                            spaceBetween: 16
+                                        },
+                                        640: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 24
+                                        },
+                                        768: {
+                                            slidesPerView: 3.5,
+                                            spaceBetween: 30
+                                        },
+                                        1024: {
+                                            slidesPerView: 4,
+                                            spaceBetween: 30
+                                        }
+                                    }}
                                     className="PostPressSwiper"
                                 >
                                     {_.map(listPostRandom2, (item, index) => {

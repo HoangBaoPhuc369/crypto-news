@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './style.css';
-import { Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
@@ -74,7 +74,12 @@ const HotNewsPost = ({ hotNewsPost }) => {
                     ref={sliderRef}
                     spaceBetween={12}
                     slidesPerView={3.3}
-                    autoplay={true}
+                    loop
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false
+                    }}
+                    modules={[Autoplay]}
                     className="PostSideSwiper"
                     breakpoints={{
                         400: {
@@ -128,7 +133,8 @@ const HotNewsPost = ({ hotNewsPost }) => {
                                             display: '-webkit-box',
                                             WebkitBoxOrient: 'vertical',
                                             WebkitLineClamp: 2,
-                                            overflow: 'hidden'
+                                            overflow: 'hidden',
+                                            height: '48px'
                                         }}
                                     >
                                         {_.get(item, 'title', '')}
@@ -142,7 +148,8 @@ const HotNewsPost = ({ hotNewsPost }) => {
                                             display: '-webkit-box',
                                             WebkitBoxOrient: 'vertical',
                                             WebkitLineClamp: 2,
-                                            overflow: 'hidden'
+                                            overflow: 'hidden',
+                                            height: '42px'
                                         }}
                                     >
                                         {_.get(item, 'subTitle', '')}

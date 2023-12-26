@@ -63,7 +63,7 @@ const Details = () => {
 
     return (
         <Container>
-            <Grid container sx={{ minHeight: '100vh' }}>
+            <Box sx={{ minHeight: '100vh' }}>
                 <DetailContent
                     post={_.get(qgetDetailPost, 'data.data', {})}
                     postRefetch={qgetDetailPost.refetch}
@@ -74,7 +74,7 @@ const Details = () => {
                 />
 
                 <SidePost title="Relate Post" listPost={_.get(qgetListPostRandom, 'data.data.data', [])} />
-            </Grid>
+            </Box>
         </Container>
     );
 };
