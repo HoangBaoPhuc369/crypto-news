@@ -14,7 +14,7 @@ const Body = ({ listPost, listCateData, listPostRandom, listPostRandom2, bannerU
             <SecondSection listPost={listPost} />
             <PostPress title="Partner Content" listPostRandom2={listPostRandom2} />
             <Container maxWidth={'lg'}>
-                <SidePost title="Some Things You Missed" listPost={listPostRandom} />
+                <SidePost title="Missed Highlights" listPost={listPostRandom} />
             </Container>
         </>
     );
