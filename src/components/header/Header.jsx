@@ -6,14 +6,18 @@ import {
     Box,
     Container,
     Divider,
+    Drawer,
     Grid,
+    IconButton,
     InputAdornment,
     InputBase,
     List,
     ListItem,
+    ListItemIcon,
     ListItemText,
     Menu,
     MenuItem,
+    MenuList,
     Popover,
     Stack,
     styled,
@@ -41,6 +45,10 @@ import Iconify from '../iconify/Iconify';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Hamburger from 'hamburger-react';
+import ArrowRightV2Icon from '../../assets/icons/ArrowRightV2';
+import LogoMobile from '../../assets/images/logo-nen-do.png';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 const StyledButton = styled('div')({
     cursor: 'pointer'
@@ -73,6 +81,8 @@ const UserBox = styled(Box)(({ theme }) => ({
 
 const Header = ({ cryptoData, bannerUrl, navData }) => {
     const navi = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+    const [open, setOpen] = useState(null);
 
     const schema = yup.object().shape({
         text: yup.string().required('Please type somethings!')
@@ -91,11 +101,17 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
         formState: { errors }
     } = hookForm;
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleSearch = (data) => {
         hookForm.reset();
         navi(`/search/${_.get(data, 'text', '')}`);
+    };
+
+    const handleOpen = (event) => {
+        setOpen(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setOpen(null);
     };
 
     return (
@@ -176,13 +192,26 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                             }}
                         >
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-                                <Grid
-                                    item
-                                    container
-                                    sx={{ display: 'flex', alignItems: 'center', gap: '34px', fontSize: '14px', height: '100%' }}
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: { xs: '0px', md: '34px' },
+                                        fontSize: '14px',
+                                        height: '100%'
+                                    }}
                                 >
-                                    <Grid
-                                        item
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '5px',
+                                            fontFamily: 'monospace'
+                                        }}
+                                    >
+                                        <Hamburger size={24} toggled={isOpen} toggle={setIsOpen} rounded />
+                                    </Box>
+                                    <Box
                                         sx={{
                                             display: 'flex',
                                             alignItems: 'center',
@@ -192,72 +221,23 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                                         }}
                                     >
                                         <Box onClick={() => navi('/')}>
-                                            <img src={logo2} style={{ width: '60px', height: '60px', borderRadius: '4px' }} alt="" />
+                                            <Box
+                                                component="img"
+                                                src={logo2}
+                                                sx={{
+                                                    width: { xs: '45px', md: '60px' },
+                                                    height: { xs: '45px', md: '60px' },
+                                                    borderRadius: '4px'
+                                                }}
+                                                alt=""
+                                                loading="lazy"
+                                            />
                                         </Box>
-                                    </Grid>
+                                    </Box>
                                     {_.map(navData, (item, index) => {
-                                        {
-                                            /* return Boolean(_.get(item, 'hasSubtab')) ? (
-                                            <div>
-                                                <Grid
-                                                    item
-                                                    sx={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        gap: '3px',
-                                                        cursor: 'pointer',
-                                                        fontFamily: 'monospace',
-                                                        height: '100%'
-                                                    }}
-                                                    aria-owns={anchorEl ? 'simple-menu' : undefined}
-                                                    aria-haspopup="true"
-                                                    onClick={handleClick}
-                                                    onMouseOver={handleClick}
-                                                >
-                                                    <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
-                                                        {_.get(item, 'label', '')}
-                                                    </Typography>
-                                                    {anchorEl ? (
-                                                        <KeyboardArrowRightRoundedIcon sx={{ transition: 'all 0.5s ease' }} />
-                                                    ) : (
-                                                        <KeyboardArrowDownRoundedIcon sx={{ transition: 'all 0.5s ease' }} />
-                                                    )}
-                                                </Grid>
-
-                                                <Menu
-                                                    id="simple-menu"
-                                                    anchorEl={anchorEl}
-                                                    open={Boolean(anchorEl)}
-                                                    onClose={handleClose}
-                                                    MenuListProps={{ onMouseLeave: handleClose }}
-                                                    PaperProps={{
-                                                        style: {
-                                                            width: 150
-                                                        }
-                                                    }}
-                                                >
-                                                    {_.map(_.get(category, 'data', []), (option, index) => (
-                                                        <>
-                                                            <MenuItem key={index} onClick={handleClose}>
-                                                                {option.name}
-                                                            </MenuItem>
-                                                        </>
-                                                    ))}
-                                                </Menu>
-                                            </div>
-                                        ) : (
-                                            <Grid item sx={{ cursor: 'pointer', fontFamily: 'monospace' }}>
-                                                <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
-                                                    {_.get(item, 'label', '')}
-                                                </Typography>
-                                            </Grid>
-                                        ); */
-                                        }
-
                                         return (
-                                            <Grid
+                                            <Box
                                                 key={_.get(item, '_id', index)}
-                                                item
                                                 sx={{ cursor: 'pointer', fontFamily: 'monospace', display: { xs: 'none', md: 'block' } }}
                                             >
                                                 <Box onClick={() => navi(`/tags/${_.get(item, 'name')}/${_.get(item, '_id')}`)}>
@@ -265,14 +245,14 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                                                         {_.get(item, 'name', '')}
                                                     </Typography>
                                                 </Box>
-                                            </Grid>
+                                            </Box>
                                         );
                                     })}
-                                </Grid>
+                                </Box>
                             </Box>
                             {/* <Pets sx={{ display: { xs: 'block', sm: 'none' } }} /> */}
 
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: '0px', md: '30px' } }}>
                                 <Icons>
                                     <TextField
                                         {...hookForm.register('text')}
@@ -305,12 +285,136 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                                         }}
                                     ></TextField>
                                 </Icons>
+                                <IconButton sx={{ display: { xs: 'flex', md: 'none' } }} onClick={handleOpen}>
+                                    <Iconify icon={'iconamoon:search-thin'} sx={{ color: '#FFF' }} width={30} />
+                                </IconButton>
                                 <LanguagePopover />
                             </Box>
                         </Toolbar>
                     </Container>
                 </Box>
             </AppBar>
+
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <Drawer
+                    sx={{
+                        flexShrink: 0,
+                        '& .MuiDrawer-paper': {
+                            width: '100vw',
+                            boxSizing: 'border-box'
+                        },
+                        flexGrow: 1
+                    }}
+                    variant="persistent"
+                    anchor="left"
+                    open={isOpen}
+                >
+                    <MenuList>
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px' }}>
+                            <Box
+                                component="img"
+                                src={LogoMobile}
+                                alt=""
+                                sx={{
+                                    width: '45px',
+                                    height: '45px'
+                                }}
+                                loading="lazy"
+                            />
+                            <CloseRoundedIcon fontSize="large" onClick={() => setIsOpen((prev) => !prev)} />
+                        </Box>
+                        {_.map(navData, (item, index) => {
+                            return (
+                                <>
+                                    <Box key={_.get(item, '_id', index)}>
+                                        <MenuItem
+                                            sx={{ py: '16px' }}
+                                            onClick={() => {
+                                                navi(`/tags/${_.get(item, 'name')}/${_.get(item, '_id')}`);
+                                                setIsOpen((prev) => !prev);
+                                            }}
+                                        >
+                                            <ListItemText>
+                                                <Typography style={{ color: '#464646', fontSize: '14px', fontWeight: 400 }}>
+                                                    {_.get(item, 'name', '')}
+                                                </Typography>
+                                            </ListItemText>
+                                            <ListItemIcon sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                                                <ArrowRightV2Icon />
+                                            </ListItemIcon>
+                                        </MenuItem>
+                                        <Divider
+                                            sx={{
+                                                color: '#D3D8DE',
+                                                marginTop: '0px !important',
+                                                marginBottom: '0px !important'
+                                            }}
+                                            variant="middle"
+                                        />
+                                    </Box>
+                                </>
+                            );
+                        })}
+                    </MenuList>
+                </Drawer>
+            </Box>
+
+            <Popover
+                open={Boolean(open)}
+                anchorEl={open}
+                onClose={handleClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                PaperProps={{
+                    sx: {
+                        p: '7px',
+                        mt: 1.5,
+                        ml: 0.75,
+                        width: 240,
+                        '& .MuiMenuItem-root': {
+                            px: 1,
+                            typography: 'body2',
+                            borderRadius: 0.75
+                        }
+                    }
+                }}
+            >
+                <Box>
+                    <TextField
+                        {...hookForm.register('text')}
+                        variant="standard"
+                        placeholder="Search Anything..."
+                        sx={{
+                            background: '#f5f5f5',
+                            borderRadius: '4px',
+                            width: '227px',
+                            '& .MuiInput-underline:before, & .MuiInput-underline:after': {
+                                display: 'none'
+                            },
+                            padding: '8px 16px',
+                            '& .MuiInputBase-input': {
+                                padding: '0',
+                                fontSize: '14px'
+                            }
+                        }}
+                        size="small"
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <Iconify
+                                        icon={'iconamoon:search-thin'}
+                                        sx={{ cursor: 'pointer' }}
+                                        onClick={() => {
+                                            hookForm.handleSubmit(handleSearch)();
+                                            handleClose();
+                                        }}
+                                    />
+                                </InputAdornment>
+                            )
+                        }}
+                    ></TextField>
+                </Box>
+            </Popover>
         </>
     );
 };

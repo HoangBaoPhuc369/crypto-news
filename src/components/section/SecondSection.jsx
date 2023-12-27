@@ -1,11 +1,8 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import _ from 'lodash';
-import { fakeDataPost3 } from '../../data/fakeDataPost';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import TitleBody from '../title/TitleBody';
-import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import LongPost from '../Post/LongPost';
 
