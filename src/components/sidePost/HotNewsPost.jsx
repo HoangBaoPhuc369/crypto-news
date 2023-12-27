@@ -72,8 +72,8 @@ const HotNewsPost = ({ hotNewsPost }) => {
             <Grid item xs={12} sx={{ display: 'flex', gap: '20px', overflow: 'hidden', height: '450px' }}>
                 <Swiper
                     ref={sliderRef}
-                    spaceBetween={12}
-                    slidesPerView={3.3}
+                    spaceBetween={24}
+                    slidesPerView={1}
                     loop
                     autoplay={{
                         delay: 3500,
@@ -82,6 +82,10 @@ const HotNewsPost = ({ hotNewsPost }) => {
                     modules={[Autoplay]}
                     className="PostSideSwiper"
                     breakpoints={{
+                        350: {
+                            slidesPerView: 1,
+                            spaceBetween: 24
+                        },
                         400: {
                             slidesPerView: 1,
                             spaceBetween: 24

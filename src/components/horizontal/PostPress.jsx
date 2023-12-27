@@ -35,8 +35,8 @@ const PostPress = ({ title, listPostRandom2 }) => {
                         <Grid container>
                             <Grid item xs={12} sx={{ display: 'flex' }}>
                                 <Swiper
-                                    spaceBetween={30}
-                                    slidesPerView={4}
+                                    spaceBetween={16}
+                                    slidesPerView={1.4}
                                     loop
                                     autoplay={{
                                         delay: 3500,

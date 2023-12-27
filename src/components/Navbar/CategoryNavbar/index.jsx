@@ -40,7 +40,7 @@ const CategoryNavbar = ({ listCateData }) => {
             <Grid item xs={12} sx={{ width: '100%', position: 'relative' }}>
                 <Swiper
                     spaceBetween={16}
-                    slidesPerView={6}
+                    slidesPerView={2}
                     breakpoints={{
                         400: {
                             slidesPerView: 2,
