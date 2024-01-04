@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { useQuery } from 'react-query';
 import PostApiService from '../../services/api-services/post.service';
 import Iconify from '../../components/iconify/Iconify';
+import { useNavigate } from 'react-router-dom';
 
 const AllPost = () => {
     const hookForm = useForm({
@@ -41,6 +42,8 @@ const AllPost = () => {
         setValue('page', value);
     };
 
+    const navi = useNavigate();
+
     return (
         <>
             <Container maxWidth="lg">
@@ -54,7 +57,7 @@ const AllPost = () => {
 
                 <Grid container spacing={2}>
                     {_.map(results, (item, index) => (
-                        <Grid item xs={12} md={3} key={index}>
+                        <Grid item xs={12} md={3} key={index} onClick={() => navi(`/details/${_.get(item, '_id')}`)}>
                             <Box
                                 sx={{
                                     width: '100%',
