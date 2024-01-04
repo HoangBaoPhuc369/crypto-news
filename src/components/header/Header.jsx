@@ -203,7 +203,7 @@ const Header = ({ cryptoData, bannerUrl, navData }) => {
                                 >
                                     <Box
                                         sx={{
-                                            display: 'flex',
+                                            display: { xs: 'flex', md: 'none' },
                                             alignItems: 'center',
                                             gap: '5px',
                                             fontFamily: 'monospace'
