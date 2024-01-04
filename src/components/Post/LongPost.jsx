@@ -21,17 +21,25 @@ const LongPost = ({ item }) => {
                 onClick={() => navi(`/details/${_.get(item, '_id')}`)}
             >
                 <Box
-                    component="img"
-                    src={_.get(item, 'imageUrl')}
-                    alt=""
                     sx={{
                         width: { xs: '100%', md: '340px' },
-                        height: { xs: '240px', md: 'auto' },
-                        objectFit: 'cover',
+                        height: { xs: '240px', md: '180px' },
                         borderRadius: '12px'
                     }}
-                    loading="lazy"
-                />
+                >
+                    <Box
+                        component={'img'}
+                        src={_.get(item, 'imageUrl')}
+                        alt=""
+                        width={{ xs: '100%', md: '340px' }}
+                        height={{ xs: '240px', md: '180px' }}
+                        style={{
+                            objectFit: 'cover',
+                            borderRadius: '12px'
+                        }}
+                        loading="lazy"
+                    />
+                </Box>
                 <Box
                     sx={{
                         display: 'flex',
@@ -76,17 +84,19 @@ const LongPost = ({ item }) => {
                         }}
                     >
                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
-                            <img
-                                src={_.get(item, 'author.avatar')}
-                                alt=""
-                                style={{
-                                    width: '44px',
-                                    height: '44px',
-                                    borderRadius: '12px',
-                                    objectFit: 'cover'
-                                }}
-                                loading="lazy"
-                            />
+                            <Box sx={{ width: '44px', height: '44px' }}>
+                                <img
+                                    src={_.get(item, 'author.avatar')}
+                                    alt=""
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        borderRadius: '12px',
+                                        objectFit: 'cover'
+                                    }}
+                                    loading="lazy"
+                                />
+                            </Box>
                             <Box sx={{ flex: '1' }}>
                                 <Typography
                                     sx={{
