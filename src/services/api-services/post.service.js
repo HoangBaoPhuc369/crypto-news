@@ -56,7 +56,7 @@ class PostApiService {
             params: {
                 local: local,
                 page: 1,
-                page_size: 5,
+                page_size: 3,
                 sort: '-views',
                 unpublished: 1
             }

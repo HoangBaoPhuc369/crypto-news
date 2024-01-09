@@ -61,6 +61,20 @@ const Details = () => {
         refetchOnWindowFocus: false
     });
 
+    const qgetBanner4 = useQuery(['qgetBanner4', language, id], () => BannerApiService.getBanner('MEDIUM_DETAIL_BANNER_4'), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
+    const qgetBanner5 = useQuery(['qgetBanner5', language, id], () => BannerApiService.getBanner('MEDIUM_DETAIL_BANNER_5'), {
+        onSuccess: (data) => {
+            // console.log(data);
+        },
+        refetchOnWindowFocus: false
+    });
+
     return (
         <Container>
             <Box sx={{ minHeight: '100vh' }}>
@@ -71,6 +85,8 @@ const Details = () => {
                     banner1={_.get(qgetBanner1, 'data.data.bannerUrl', '')}
                     banner2={_.get(qgetBanner2, 'data.data.bannerUrl', '')}
                     banner3={_.get(qgetBanner3, 'data.data.bannerUrl', '')}
+                    banner4={_.get(qgetBanner4, 'data.data.bannerUrl', '')}
+                    banner5={_.get(qgetBanner5, 'data.data.bannerUrl', '')}
                 />
 
                 <SidePost title="Relate Post" listPost={_.get(qgetListPostRandom, 'data.data.data', [])} />

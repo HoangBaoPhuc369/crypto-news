@@ -20,7 +20,7 @@ import { useMutation } from 'react-query';
 import { LoadingButton } from '@mui/lab';
 import { useNavigate } from 'react-router-dom';
 
-const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }) => {
+const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3, banner4, banner5 }) => {
     const navi = useNavigate();
 
     const schema = yup.object().shape({
@@ -440,6 +440,28 @@ const DetailContent = ({ post, postRefetch, topPost, banner1, banner2, banner3 }
                         <Box sx={{ borderRadius: '16px', background: '#F5F5F5', height: '180px' }}>
                             <img
                                 src={banner3}
+                                loading="lazy"
+                                alt=""
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }}
+                            />
+                        </Box>
+                    </Grid>
+
+                    <Grid item xs={12} my={'25px'}>
+                        <Box sx={{ borderRadius: '16px', background: '#F5F5F5', height: '180px' }}>
+                            <img
+                                src={banner4}
+                                loading="lazy"
+                                alt=""
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }}
+                            />
+                        </Box>
+                    </Grid>
+
+                    <Grid item xs={12} my={'25px'}>
+                        <Box sx={{ borderRadius: '16px', background: '#F5F5F5', height: '180px' }}>
+                            <img
+                                src={banner5}
                                 loading="lazy"
                                 alt=""
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '16px' }}
